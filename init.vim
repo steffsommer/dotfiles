@@ -19,7 +19,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " File Explorer
   Plug 'scrooloose/nerdtree'
 
-  " Typescript support
+  " Syntax Highlighting for Typescript
   Plug 'leafgarland/typescript-vim'
 
   " Fuzzy File Finder
@@ -56,6 +56,9 @@ set updatetime=300
 set shortmess+=c
 
 set signcolumn=yes
+
+" Prettier Command
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -96,9 +99,12 @@ endfunction
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" ================================
-" ===== PERSONAL PREFERENCES =====
-" ================================
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" ====================================
+" ===== PERSONAL VIM PREFERENCES =====
+" ====================================
 
 " show line numbers
 set number
@@ -116,8 +122,8 @@ let mapleader = ","
 set expandtab
 
 " indentation
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 
 set nowrap
 
@@ -127,7 +133,17 @@ map <Up> <c-y>
 
 set background=dark
 colorscheme material
+
+" ====================================
+" ==== PERSONAL PLUGIN PREFERENCES ===
+" ====================================
+
+let g:ctrlp_custom_ignore = 'node_modules\|dist'
+
+
+" vim-Airline Settings
 let g:airline_theme='deus'
+let g:airline#extensions#tabline#enabled=1
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
