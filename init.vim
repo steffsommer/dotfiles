@@ -244,7 +244,7 @@ let g:airline#extensions#tabline#enabled=1
 " custom keybindings
 nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>fp :CtrlP<cr>
-nmap <leader>ff :FZF<cr>
+nmap <leader>ff :GFiles<cr>
 
 " Nvim python environment settings
 " used for pudb plugin
