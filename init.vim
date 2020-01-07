@@ -15,7 +15,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " colorschemes
   Plug 'morhetz/gruvbox'
   Plug 'kaicataldo/material.vim'  
-  
+  Plug 'PotatoesMaster/i3-vim-syntax'
+
   " file explorer
   Plug 'scrooloose/nerdtree'
 
@@ -34,7 +35,24 @@ call plug#begin('~/.local/share/nvim/plugged')
   " airline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+ 
+  " Fuzzy find files
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+  " ========
+  " Plugins to keep in Mind for the future
+  " ========
+
+  " Change/add/delete brackets for words
+  " Plug 'tpope/vim-surround' 
+  
+  " Show indentation
+  " Plug 'Yggdroot/indentLine'
+  
+  " Quickly comment in/out pieces of code
+  " Plug 'preservim/nerdcommenter'
+
+  
 call plug#end()
 
 " ===============================
@@ -221,6 +239,7 @@ let g:airline#extensions#tabline#enabled=1
 " custom keybindings
 nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>fp :CtrlP<cr>
+nmap <leader>ff :FZF<cr>
 
 " Nvim python environment settings
 " used for pudb plugin
