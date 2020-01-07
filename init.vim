@@ -19,12 +19,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " file explorer
   Plug 'scrooloose/nerdtree'
+  " Plug 'ryanoasis/vim-devicons'
 
   " syntax Highlighting for Typescript
   Plug 'leafgarland/typescript-vim'
 
   " Global keyword search in project
-  Plug 'kien/ctrlp'
+  Plug 'kien/ctrlp.vim'
 
   " auto-close brackets
   Plug 'Raimondi/delimitMate'
@@ -38,6 +39,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  
   " Fuzzy find files
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 
   " Show indentation
   Plug 'Yggdroot/indentLine'
@@ -153,10 +155,6 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -213,6 +211,9 @@ set shiftwidth=4
 " Don't wrap lines
 set nowrap
 
+" Character encoding
+set encoding=UTF-8
+
 " scroll down with arroy keys
 map <Down> <c-e>
 map <Up> <c-y>
@@ -220,6 +221,10 @@ map <Up> <c-y>
 " select colorscheme
 set background=dark
 colorscheme gruvbox
+
+" more natural opening of splits
+set splitright
+set splitbelow
 
 " slight highlight on line number and line where the carret is located
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
@@ -244,10 +249,10 @@ nmap <leader>ff :FZF<cr>
 " Nvim python environment settings
 " used for pudb plugin
 if has('nvim')
-  let g:python_host_prog='/usr/bin/python'
-  let g:python3_host_prog='/usr/bin/python3'
-  let g:pudb_python='/usr/bin/python3'
-  let g:pudb_breakpoint_symbol='☠'
+    let g:python_host_prog='/usr/bin/python'
+    let g:python3_host_prog='/usr/bin/python3'
+    let g:pudb_python='/usr/bin/python3'
+    let g:pudb_breakpoint_symbol='☠'
 endif
 
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
@@ -256,3 +261,17 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+
+" Execute FZF in a floating window
+function! FloatingFZF()
+    let width = float2nr(&columns * 0.8)
+    let height = float2nr(&lines * 0.6)
+    let opts = { 'relative': 'editor',
+               \ 'row': (&lines - height) / 2,
+               \ 'col': (&columns - width) / 2,
+               \ 'width': width,
+               \ 'height': height }
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+endfunction
+
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
