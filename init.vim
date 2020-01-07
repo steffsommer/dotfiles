@@ -23,8 +23,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " syntax Highlighting for Typescript
   Plug 'leafgarland/typescript-vim'
 
-  " fuzzy file finder
-  Plug 'ctrlpvim/ctrlp.vim'
+  " Global keyword search in project
+  Plug 'kien/ctrlp'
 
   " auto-close brackets
   Plug 'Raimondi/delimitMate'
@@ -39,15 +39,15 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Fuzzy find files
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+  " Show indentation
+  Plug 'Yggdroot/indentLine'
+
   " ========
   " Plugins to keep in Mind for the future
   " ========
 
   " Change/add/delete brackets for words
   " Plug 'tpope/vim-surround' 
-  
-  " Show indentation
-  " Plug 'Yggdroot/indentLine'
   
   " Quickly comment in/out pieces of code
   " Plug 'preservim/nerdcommenter'
