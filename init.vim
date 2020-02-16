@@ -108,8 +108,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader> dp <Plug>(coc-diagnostic-prev)
+nmap <leader> dn <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -185,17 +185,20 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
-" Don't wrap lines
+" don't wrap lines
 set nowrap
 
-" Character encoding
+" character encoding
 set encoding=UTF-8
 
-" scroll down with arroy keys
-map <Down> <c-e>
-map <Up> <c-y>
+" set Correct cursor position after starting a new line
+set autoindent
+set smartindent
 
-" select colorscheme
+" auto-close curly brackets 2 lines below
+inoremap {<cr> {<cr>}<c-o><s-o>
+
+" set colorscheme
 set background=dark
 colorscheme gruvbox
 
@@ -207,6 +210,14 @@ set splitbelow
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
+" Reload file contents when changed externally 
+set autoread
+au FocusGained,BufEnter * :silent! !
+
+" no swap files
+set noswapfile
+
+
 " ====================================
 " ==== PERSONAL PLUGIN PREFERENCES ===
 " ====================================
@@ -214,6 +225,9 @@ set cursorline
 " vim-Airline Settings
 let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled=1
+
+" close NERDTree if a file gets opened
+let NERDTreeQuitOnOpen=1
 
 " custom keybindings
 nmap <leader>nt :NERDTreeToggle<cr>
