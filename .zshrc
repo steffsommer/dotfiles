@@ -95,3 +95,5 @@ chbr() {
     git checkout $(grep -o -e '[a-zA-Z0-9_]*' <<< $(git --no-pager branch) | fzf)
 }
 
+
+source /home/stso/.config/broot/launcher/bash/br

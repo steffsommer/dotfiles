@@ -12,25 +12,26 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-  " colorschemes
+  " All for them fancy looks
   Plug 'morhetz/gruvbox'
   Plug 'kaicataldo/material.vim'  
   Plug 'PotatoesMaster/i3-vim-syntax'
+  Plug 'ryanoasis/vim-devicons'
 
-  " file explorer
+  " File explorer
   Plug 'scrooloose/nerdtree'
   " Plug 'ryanoasis/vim-devicons'
 
-  " syntax Highlighting for Typescript
+  " Syntax Highlighting for Typescript
   Plug 'leafgarland/typescript-vim'
 
-  " auto-close brackets
+  " Auto-close brackets
   Plug 'Raimondi/delimitMate'
 
-  " code completion engine
+  " Code completion engine
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " airline
+  " Airline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
  
@@ -50,6 +51,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Konfekt/FastFold'
   Plug 'matze/vim-tex-fold'
 
+  " Git integration
+  Plug 'tpope/vim-fugitive'
+
   " ========
   " Plugins to keep in Mind for the future
   " ========
@@ -68,7 +72,6 @@ call plug#end()
 " ===============================
 
 " more information at https://github.com/neoclide/coc.nvim
-
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -163,7 +166,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " ====================================
-" ===== PERSONAL VIM PREFERENCES =====
+" ====== PERSONAL VIM SETTINGS =======
 " ====================================
 
 " show line numbers
@@ -217,9 +220,17 @@ au FocusGained,BufEnter * :silent! !
 " no swap files
 set noswapfile
 
+" ignore case when searching
+set ignorecase
+
+" search case sensitive when needle contains uppercase letters
+set smartcase
+
+" start searching before hitting enter
+set incsearch
 
 " ====================================
-" ==== PERSONAL PLUGIN PREFERENCES ===
+" ===== PERSONAL PLUGIN SETTINGS =====
 " ====================================
 
 " vim-Airline Settings
