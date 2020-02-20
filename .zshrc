@@ -20,6 +20,7 @@ export PATH=/usr/lib/jdk-8u201-linux-x64/jdk1.8.0_201/bin:$PATH
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=/usr/local/sdks/flutter_linux_v1.12.13+hotfix.7-stable/flutter/bin:$PATH
 export PATH=/opt/android-studio-ide-191.6010548-linux/android-studio/bin:$PATH
+export PATH=/home/stso/code/rpi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin:$PATH
 
 # setup node version manager
 export NVM_DIR="$HOME/.nvm"
