@@ -16,11 +16,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'kaicataldo/material.vim'  
   Plug 'PotatoesMaster/i3-vim-syntax'
-  Plug 'ryanoasis/vim-devicons'
 
   " File explorer
   Plug 'scrooloose/nerdtree'
-  " Plug 'ryanoasis/vim-devicons'
+  Plug 'ryanoasis/vim-devicons'
 
   " Syntax Highlighting for Typescript
   Plug 'leafgarland/typescript-vim'
@@ -53,6 +52,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Git integration
   Plug 'tpope/vim-fugitive'
+
+  " Generate JSDoc
+  Plug 'heavenshell/vim-jsdoc'
 
   " ========
   " Plugins to keep in Mind for the future
