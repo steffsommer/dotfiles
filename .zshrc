@@ -37,15 +37,11 @@ ZSH_THEME="classyTouch"
 # Automatically check for updates every 13 days
 export UPDATE_ZSH_DAYS=13
 
-# display red dots while waiting for a completion result
-COMPLETION_WAITING_DOTS="true"
-
 # Load Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
   git
-  per-directory-history
   zsh-syntax-highlighting
 )
 
@@ -65,7 +61,7 @@ alias fkenv_test="export NODE_ENV=default_DEV;export VISP_USER=TEST_STSO;export 
 alias fkenv="export NODE_ENV=default_DEV;export VISP_USER=STSO"
 
 # program shortcuts
-alias sshome="ssh flower@bebop.feste-ip.net -p 40000"
+alias ssh_local="ssh flower@192.168.178.24 -p 40000"
 
 # export TERM="xterm"
 
