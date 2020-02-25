@@ -55,6 +55,7 @@ source $ZSH/oh-my-zsh.sh
 alias graz="~/code/FK_VISP_GRAZ_SERVER/software/"
 alias orga="~/code/FK_ORGA/software/src"
 alias storyt="cd /home/stso/code/pnp_drinking/tools/storyeditor"
+alias master="cd /home/stso/OTH/masterarbeit/arbeit"
 
 # environment presets
 alias fkenv_test="export NODE_ENV=default_DEV;export VISP_USER=TEST_STSO;export TEST="1""

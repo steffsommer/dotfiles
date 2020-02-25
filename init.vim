@@ -1,4 +1,3 @@
-
 "   _   ________  ______  _____
 "  | | / /  _/  |/  / _ \/ ___/
 "  | |/ // // /|_/ / , _/ /__  
@@ -56,16 +55,18 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Generate JSDoc
   Plug 'heavenshell/vim-jsdoc'
 
+  " Change/add/delete brackets for words
+  Plug 'tpope/vim-surround' 
+  
+  " Rainbow brackets
+  Plug 'frazrepo/vim-rainbow'
+
   " ========
   " Plugins to keep in Mind for the future
   " ========
 
-  " Change/add/delete brackets for words
-  " Plug 'tpope/vim-surround' 
-  
   " Quickly comment in/out pieces of code
   " Plug 'preservim/nerdcommenter'
-
   
 call plug#end()
 
@@ -165,7 +166,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}%{FugitiveStatusline()}%{get(b:,'coc_current_function','')}
 
 " ====================================
 " ====== PERSONAL VIM SETTINGS =======
@@ -196,7 +197,7 @@ set nowrap
 " character encoding
 set encoding=UTF-8
 
-" set Correct cursor position after starting a new line
+" set correct cursor position after starting a new line
 set autoindent
 set smartindent
 
@@ -230,6 +231,14 @@ set smartcase
 
 " start searching before hitting enter
 set incsearch
+
+" set mark at column 100 in tex files
+autocmd FileType tex set colorcolumn=100
+" autocmd FileType tex VimtexCompile
+nmap <Leader>lc :VimtexCompile<CR>
+
+" quicksave using leader - s
+noremap <Leader>s :update<CR>
 
 " ====================================
 " ===== PERSONAL PLUGIN SETTINGS =====
@@ -284,3 +293,11 @@ function! FloatingFZF()
 endfunction
 
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+" enable rainbow colors by default
+let g:rainbow_active = 1
+
+" It should be:
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : 'latexbuild',
+    \}
