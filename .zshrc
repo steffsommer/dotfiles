@@ -3,7 +3,6 @@
 #  /_  / / ___/ __ \/ ___/ ___/
 #   / /_(__  ) / / / /  / /__  
 #  /___/____/_/ /_/_/   \___/  
-                            
 # author: somsky
 
 ##############################################
@@ -56,6 +55,7 @@ alias graz="~/code/FK_VISP_GRAZ_SERVER/software/"
 alias orga="~/code/FK_ORGA/software/src"
 alias storyt="cd /home/stso/code/pnp_drinking/tools/storyeditor"
 alias master="cd /home/stso/OTH/masterarbeit/arbeit"
+alias v="vim"
 
 # environment presets
 alias fkenv_test="export NODE_ENV=default_DEV;export VISP_USER=TEST_STSO;export TEST="1""
@@ -63,6 +63,7 @@ alias fkenv="export NODE_ENV=default_DEV;export VISP_USER=STSO"
 
 # program shortcuts
 alias ssh_local="ssh flower@192.168.178.24 -p 40000"
+alias tldr="tldr -t base16"
 
 # export TERM="xterm"
 
@@ -71,9 +72,6 @@ alias ssh_local="ssh flower@192.168.178.24 -p 40000"
 ##############################################
 ############### SHELL SETTINGS ###############
 ##############################################
-
-# make capslock an additional escape key
-setxkbmap -option caps:escape
 
 # enable vi mode
 bindkey -v
@@ -93,5 +91,13 @@ chbr() {
     git checkout $(grep -o -e '[a-zA-Z0-9_]*' <<< $(git --no-pager branch) | fzf)
 }
 
+c() {
+  cd "$@" && ls
+}
 
-source /home/stso/.config/broot/launcher/bash/br
+ku() {
+  kill -9 $(pgrep Unity | head -n 1)  
+}
+
+source /opt/ros/melodic/setup.zsh
+

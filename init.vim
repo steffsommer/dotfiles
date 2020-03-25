@@ -13,6 +13,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " All for them fancy looks
   Plug 'morhetz/gruvbox'
+  Plug 'jacoborus/tender.vim'
   Plug 'kaicataldo/material.vim'  
   Plug 'PotatoesMaster/i3-vim-syntax'
 
@@ -172,6 +173,8 @@ set statusline^=%{coc#status()}%{FugitiveStatusline()}%{get(b:,'coc_current_func
 " ====== PERSONAL VIM SETTINGS =======
 " ====================================
 
+syntax enable
+
 " show line numbers
 set number
 
@@ -195,7 +198,7 @@ set shiftwidth=2
 set nowrap
 
 " character encoding
-set encoding=UTF-8
+
 
 " set correct cursor position after starting a new line
 set autoindent
@@ -205,8 +208,8 @@ set smartindent
 inoremap {<cr> {<cr>}<c-o><s-o>
 
 " set colorscheme
-set background=dark
-colorscheme gruvbox
+" set background=dark
+colorscheme tender
 
 " more natural opening of splits
 set splitright
@@ -234,18 +237,16 @@ set incsearch
 
 " set mark at column 100 in tex files
 autocmd FileType tex set colorcolumn=100
-" autocmd FileType tex VimtexCompile
-nmap <Leader>lc :VimtexCompile<CR>
 
-" quicksave using leader - s
-noremap <Leader>s :update<CR>
+" use system clipboard for copy/paste operations
+set clipboard+=unnamedplus
 
 " ====================================
 " ===== PERSONAL PLUGIN SETTINGS =====
 " ====================================
 
 " vim-Airline Settings
-let g:airline_theme='deus'
+let g:airline_theme='tender'
 let g:airline#extensions#tabline#enabled=1
 
 " close NERDTree if a file gets opened
@@ -255,6 +256,14 @@ let NERDTreeQuitOnOpen=1
 nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>ff :Ag<cr>
 nmap <leader>cp :GFiles<cr>
+nmap <Leader>vc :VimtexCompile<CR>
+" quicksave
+noremap <Leader>s :update<CR>
+" navigate between splits easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Latex Support
 let g:tex_flavor  = 'latex'
@@ -268,7 +277,7 @@ let g:vimtex_view_method = 'zathura'
 " used for pudb plugin
 if has('nvim')
     let g:python_host_prog='/usr/bin/python'
-    let g:python3_host_prog='/usr/bin/python3'
+    let g:python3_host_prog='/usr/bin/python3.8'
     let g:pudb_python='/usr/bin/python3'
     let g:pudb_breakpoint_symbol='☠'
 endif
