@@ -5,6 +5,8 @@
 
 " author: somsky
 
+set termguicolors
+
 " ===============================
 " ======= PLUGIN SECTION ========
 " ===============================
@@ -14,8 +16,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " All for them fancy looks
   Plug 'morhetz/gruvbox'
   Plug 'jacoborus/tender.vim'
-  Plug 'kaicataldo/material.vim'  
-  Plug 'PotatoesMaster/i3-vim-syntax'
+  Plug 'alessandroyorba/despacio'
+  Plug 'sheerun/vim-polyglot'
 
   " File explorer
   Plug 'scrooloose/nerdtree'
@@ -41,10 +43,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Show indentation
   Plug 'Yggdroot/indentLine'
 
-  "Dart/Flutter Support
-  Plug 'dart-lang/dart-vim-plugin'
-  Plug 'thosakwe/vim-flutter'
-
   " Tex Support
   Plug 'lervag/vimtex'
   Plug 'Konfekt/FastFold'
@@ -53,14 +51,18 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Git integration
   Plug 'tpope/vim-fugitive'
 
-  " Generate JSDoc
-  Plug 'heavenshell/vim-jsdoc'
-
-  " Change/add/delete brackets for words
-  Plug 'tpope/vim-surround' 
-  
   " Rainbow brackets
   Plug 'frazrepo/vim-rainbow'
+
+  " Debugging
+  Plug 'puremourning/vimspector'
+
+  "Dart/Flutter Support
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'thosakwe/vim-flutter'
+
+  " Hide other buffers
+  Plug 'markstory/vim-zoomwin'
 
   " ========
   " Plugins to keep in Mind for the future
@@ -127,14 +129,6 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -145,29 +139,14 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{FugitiveStatusline()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')%{FugitiveStatusline()}}
 
 " ====================================
 " ====== PERSONAL VIM SETTINGS =======
@@ -197,9 +176,6 @@ set shiftwidth=2
 " don't wrap lines
 set nowrap
 
-" character encoding
-
-
 " set correct cursor position after starting a new line
 set autoindent
 set smartindent
@@ -208,7 +184,6 @@ set smartindent
 inoremap {<cr> {<cr>}<c-o><s-o>
 
 " set colorscheme
-" set background=dark
 colorscheme tender
 
 " more natural opening of splits
@@ -241,6 +216,25 @@ autocmd FileType tex set colorcolumn=100
 " use system clipboard for copy/paste operations
 set clipboard+=unnamedplus
 
+set relativenumber
+
+" quicksave
+noremap <Leader>s :update<CR>
+
+" navigate between splits easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" easier vertical resizing
+nnoremap <silent> <leader>r+ :vertical resize +20<CR>
+nnoremap <silent> <leader>r- :vertical resize -20<CR>
+
+" Tab/Shift+Tab to circle buffers
+nnoremap <TAB> :bn<CR>
+nnoremap <S-TAB> :bp<CR>
+
 " ====================================
 " ===== PERSONAL PLUGIN SETTINGS =====
 " ====================================
@@ -257,8 +251,10 @@ nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>ff :Ag<cr>
 nmap <leader>cp :GFiles<cr>
 nmap <Leader>vc :VimtexCompile<CR>
+
 " quicksave
 noremap <Leader>s :update<CR>
+
 " navigate between splits easier
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -276,18 +272,12 @@ let g:vimtex_view_method = 'zathura'
 " Nvim python environment settings
 " used for pudb plugin
 if has('nvim')
-    let g:python_host_prog='/usr/bin/python'
-    let g:python3_host_prog='/usr/bin/python3.8'
-    let g:pudb_python='/usr/bin/python3'
+    let g:python_host_prog='/usr/bin/python2'
+    let g:python3_host_prog='/usr/bin/python'
+    let g:pudb_python='/usr/bin/python'
     let g:pudb_breakpoint_symbol='☠'
 endif
 
-"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 " Execute FZF in a floating window
 function! FloatingFZF()
@@ -303,10 +293,12 @@ endfunction
 
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
-" enable rainbow colors by default
+" enable rainbow brackets by default
 let g:rainbow_active = 1
 
 " It should be:
 let g:vimtex_compiler_latexmk = {
     \ 'build_dir' : 'latexbuild',
     \}
+
+let g:vimspector_enable_mappings = 'HUMAN'

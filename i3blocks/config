@@ -1,0 +1,24 @@
+[mediaplayer]
+command=$SCRIPT_DIR/mediaplayer
+instance=spotify
+interval=2
+signal=10
+
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio
+interval=persist
+SUBSCRIBE=1
+
+
+[official-updates]
+command=echo " $(checkupdates | wc -l)"
+interval=120
+
+[ip]
+command=hostname -i | awk '{ print ":" $1 }'
+interval=once
+color=#91E78B
+
+[time]
+command=echo " $(date "+%a %d/%m %R")"
+interval=5
