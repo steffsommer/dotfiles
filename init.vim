@@ -5,94 +5,87 @@
 
 " author: somsky
 
+" ===============================
+" ====== GENERAL SETTINGS =======
+" ===============================
+
+syntax enable
 set termguicolors
+set number
+set relativenumber
+set nohlsearch
+set scrolloff=5
+set sidescrolloff=15
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set nowrap
+set autoindent
+set smartindent
+set splitright
+set splitbelow
+set noswapfile
+set ignorecase
+set smartcase
+set incsearch
+set autoread
+set undofile
+set undodir=/tmp
+
+" use system clipboard for copy/paste operations
+set clipboard+=unnamedplus
+
+" slight highlight on line number and line where the carret is located
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
+
+" Reload file contents on BufEnter
+au FocusGained,BufEnter * :checktime
+
+let mapleader = ","
 
 " ===============================
 " ======= PLUGIN SECTION ========
 " ===============================
 
 call plug#begin('~/.local/share/nvim/plugged')
-
-  " All for them fancy looks
   Plug 'morhetz/gruvbox'
   Plug 'jacoborus/tender.vim'
   Plug 'alessandroyorba/despacio'
-  Plug 'sheerun/vim-polyglot'
-
-  " File explorer
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-
-  " Syntax Highlighting for Typescript
-  Plug 'leafgarland/typescript-vim'
-
-  " Auto-close brackets
-  Plug 'Raimondi/delimitMate'
-
-  " Code completion engine
+  Plug 'jiangmiao/auto-pairs'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-  " Airline
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
- 
-  " Fuzzy find files
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-
-  " Show indentation
   Plug 'Yggdroot/indentLine'
-
-  " Tex Support
   Plug 'lervag/vimtex'
   Plug 'Konfekt/FastFold'
   Plug 'matze/vim-tex-fold'
-
-  " Git integration
   Plug 'tpope/vim-fugitive'
-
-  " Rainbow brackets
   Plug 'frazrepo/vim-rainbow'
-
-  " Debugging
   Plug 'puremourning/vimspector'
-
-  "Dart/Flutter Support
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'thosakwe/vim-flutter'
-
-  " Hide other buffers
   Plug 'markstory/vim-zoomwin'
-
-  " ========
-  " Plugins to keep in Mind for the future
-  " ========
-
-  " Quickly comment in/out pieces of code
-  " Plug 'preservim/nerdcommenter'
-  
+  Plug 'easymotion/vim-easymotion'
+  Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
+
+colorscheme tender
 
 " ===============================
 " ===== COC COMPAT SETTINGS =====
 " ===============================
 
 " more information at https://github.com/neoclide/coc.nvim
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
+set hidden          " if hidden is not set, TextEdit might fail.
+set nobackup        " Some servers have issues with backup files, see #649
 set nowritebackup
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
+set updatetime=300  "update time for diagnostic messages
+set shortmess+=c    " don't give ins-completion-menu messages.
+set signcolumn=yes " always show signcolumns
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -145,80 +138,10 @@ command! -nargs=0 Format :call CocAction('format')
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')%{FugitiveStatusline()}}
+" ===============================
+" =========== REMAPS ============
+" ===============================
 
-" ====================================
-" ====== PERSONAL VIM SETTINGS =======
-" ====================================
-
-syntax enable
-
-" show line numbers
-set number
-
-" no search highlighting
-set nohlsearch
-
-" scroll before cursor gets to end of screen
-set scrolloff=5
-set sidescrolloff=15
-
-let mapleader = ","
-
-" spaces instead of tabs
-set expandtab
-
-" indentation
-set tabstop=2
-set shiftwidth=2
-
-" don't wrap lines
-set nowrap
-
-" set correct cursor position after starting a new line
-set autoindent
-set smartindent
-
-" auto-close curly brackets 2 lines below
-inoremap {<cr> {<cr>}<c-o><s-o>
-
-" set colorscheme
-colorscheme tender
-
-" more natural opening of splits
-set splitright
-set splitbelow
-
-" slight highlight on line number and line where the carret is located
-highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-set cursorline
-
-" Reload file contents when changed externally 
-set autoread
-au FocusGained,BufEnter * :silent! !
-
-" no swap files
-set noswapfile
-
-" ignore case when searching
-set ignorecase
-
-" search case sensitive when needle contains uppercase letters
-set smartcase
-
-" start searching before hitting enter
-set incsearch
-
-" set mark at column 100 in tex files
-autocmd FileType tex set colorcolumn=100
-
-" use system clipboard for copy/paste operations
-set clipboard+=unnamedplus
-
-set relativenumber
-
-" quicksave
 noremap <Leader>s :update<CR>
 
 " navigate between splits easier
@@ -235,31 +158,24 @@ nnoremap <silent> <leader>r- :vertical resize -20<CR>
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
 
-" ====================================
-" ===== PERSONAL PLUGIN SETTINGS =====
-" ====================================
-
-" vim-Airline Settings
-let g:airline_theme='tender'
-let g:airline#extensions#tabline#enabled=1
-
-" close NERDTree if a file gets opened
-let NERDTreeQuitOnOpen=1
-
-" custom keybindings
 nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>ff :Ag<cr>
 nmap <leader>cp :GFiles<cr>
 nmap <Leader>vc :VimtexCompile<CR>
 
-" quicksave
-noremap <Leader>s :update<CR>
+" 2 character search motion
+nmap + <Plug>(easymotion-s2)
 
-" navigate between splits easier
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" ====================================
+" ============== OTHER ===============
+" ====================================
+
+" vim-Airline Settings
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts = 1
+
+" close NERDTree if a file gets opened
+let NERDTreeQuitOnOpen=1
 
 " Latex Support
 let g:tex_flavor  = 'latex'

@@ -132,16 +132,21 @@ bindsym $mod+Shift+0 move container to workspace 10
 ##### CUSTOM CHANGES #####
 ##########################
 
-# Audio controls
-# I might have to update this in the future, these bindings do not work anymore
-# when a bluetooth headset is connected
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle"
+# Pulse Audio controls
+# get the correct sink using "pactl list short sinks"
+set $sink 1
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # lock on Mod+shift+X
 bindsym $mod+Shift+X exec "i3lock-fancy -p -- scrot -q20"
