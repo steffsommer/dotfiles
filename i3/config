@@ -11,6 +11,9 @@ exec_always feh --bg-scale ~/Pictures/somewhereinjapan.jpg
 # Start gnome keyring
 # exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets --password-store=gnome
 
+# Workaround: Prevent Android emulator from flickering
+for_window [title="Android Emulator - nexus5:5554"] floating enable
+
 # set Super key as Mod-Key
 set $mod Mod1
 

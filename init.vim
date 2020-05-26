@@ -1,7 +1,8 @@
-"   _   ________  ______  _____
-"  | | / /  _/  |/  / _ \/ ___/
-"  | |/ // // /|_/ / , _/ /__  
-"  |___/___/_/  /_/_/|_|\___/  
+"    _____   _____________    ________  ___
+"   /  _/ | / /  _/_  __/ |  / /  _/  |/  /
+"   / //  |/ // /  / /  | | / // // /|_/ / 
+" _/ // /|  // /  / /   | |/ // // /  / /  
+"/___/_/ |_/___/ /_(_)  |___/___/_/  /_/   
 
 " author: somsky
 
@@ -49,28 +50,34 @@ let mapleader = ","
 " ===============================
 
 call plug#begin('~/.local/share/nvim/plugged')
+"+=----------------=+ LOOKS & SYNTAX +=----------------=+
   Plug 'morhetz/gruvbox'
   Plug 'jacoborus/tender.vim'
   Plug 'alessandroyorba/despacio'
+  Plug 'Yggdroot/indentLine'
+  Plug 'vim-airline/vim-airline'
+  Plug 'PotatoesMaster/i3-vim-syntax'
+  Plug 'frazrepo/vim-rainbow'
+"+=----------------=+ FILE HANDLING +=----------------=+
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'vim-airline/vim-airline'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-  Plug 'Yggdroot/indentLine'
+"+=--------------=+ LANGAGE SPECIFICS +=--------------=+
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'lervag/vimtex'
   Plug 'Konfekt/FastFold'
   Plug 'matze/vim-tex-fold'
-  Plug 'tpope/vim-fugitive'
-  Plug 'frazrepo/vim-rainbow'
-  Plug 'puremourning/vimspector'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'thosakwe/vim-flutter'
+"+=----------------=+ QUALITY OF LIFE +=----------------=+
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
   Plug 'markstory/vim-zoomwin'
   Plug 'easymotion/vim-easymotion'
-  Plug 'PotatoesMaster/i3-vim-syntax'
+  Plug 'jiangmiao/auto-pairs'
+"+=----------------=+ OTHER +=----------------=+
+  Plug 'tpope/vim-fugitive'
+  Plug 'puremourning/vimspector'
 call plug#end()
 
 colorscheme tender
@@ -106,31 +113,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <leader> dp <Plug>(coc-diagnostic-prev)
-nmap <leader> dn <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -165,6 +150,36 @@ nmap <Leader>vc :VimtexCompile<CR>
 
 " 2 character search motion
 nmap + <Plug>(easymotion-s2)
+
+" Mardown preview
+nmap <leader>mb :MarkdownPreview<cr>
+nmap <leader>ms :MarkdownPreviewStop<cr>
+
+"fancy git graph
+nmap <leader>gg :terminal git lg2<cr>
+
+" reload config
+nmap <leader>rc :so ~/.config/nvim/init.vim<cr>
+
+" error next/previous
+nmap <leader> en <Plug>(coc-diagnostic-prev)
+nmap <leader> ep <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " ====================================
 " ============== OTHER ===============
@@ -218,3 +233,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 let g:vimspector_enable_mappings = 'HUMAN'
+
+" vim markdown browser
+let g:mkdp_browser = 'firefox'
+
