@@ -20,6 +20,8 @@ set sidescrolloff=15
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set smarttab
+set conceallevel=0
 set nowrap
 set autoindent
 set smartindent
@@ -138,12 +140,16 @@ nnoremap <C-H> <C-W><C-H>
 " easier vertical resizing
 nnoremap <silent> <leader>r+ :vertical resize +20<CR>
 nnoremap <silent> <leader>r- :vertical resize -20<CR>
+"! nnoremap <M-j>    :resize -2<CR>
+"! nnoremap <M-k>    :resize +2<CR>
+"! nnoremap <M-h>    :vertical resize -2<CR>
+"! nnoremap <M-l>    :vertical resize +2<CR>
 
 " Tab/Shift+Tab to circle buffers
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
 
-nmap <leader>nt :NERDTreeToggle<cr>
+nmap <silent> <leader>nt :NERDTreeToggle<cr>
 nmap <leader>ff :Ag<cr>
 nmap <leader>cp :GFiles<cr>
 nmap <Leader>vc :VimtexCompile<CR>
@@ -181,6 +187,9 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+" Close Buffers fast
+nmap <silent> <leader>q :bd<cr>
+
 " ====================================
 " ============== OTHER ===============
 " ====================================
@@ -190,7 +199,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts = 1
 
 " close NERDTree if a file gets opened
-let NERDTreeQuitOnOpen=1
+" let NERDTreeQuitOnOpen=1
 
 " Latex Support
 let g:tex_flavor  = 'latex'
