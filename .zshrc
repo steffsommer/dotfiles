@@ -23,8 +23,9 @@ export PATH="$PATH:/opt/flutter-1.17.1/bin"
 ############# OH MY ZSH SETTINGS #############
 ##############################################
 
-# oh my zsh theme
 ZSH_THEME="agnoster"
+# ZSH_THEME="miloshadzic"
+
 
 # Automatically check for updates every 13 days
 export UPDATE_ZSH_DAYS=13
@@ -46,6 +47,7 @@ source $ZSH/oh-my-zsh.sh
 alias graz="~/code/FK_VISP_GRAZ_SERVER/software/"
 alias orga="~/code/FK_ORGA/software/src"
 alias mcode="cd ~/code/autonomousdrone/code/simulation"
+alias marbeit="cd ~/code/autonomousdrone/arbeit"
 
 alias v="vim"
 alias vimrc='"$EDITOR" ~/.config/nvim/init.vim'
@@ -55,6 +57,7 @@ alias i3conf='"$EDITOR" ~/.config/i3/config'
 # program shortcuts
 alias ssh_local="ssh flower@192.168.178.24 -p 40000"
 alias tldr="tldr -t base16"
+alias mensa="~/code/mensa/menu.py stwnodatasource"
 
 # export TERM="xterm"
 

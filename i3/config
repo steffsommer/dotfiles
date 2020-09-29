@@ -5,49 +5,72 @@
 #/___//____/   \____/\____/_/ |_/_/   /___/\____/   
 
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
-#==-------------== Startup Programs #==-------------==
-
-# set $bg_img ~/Pictures/dorohedoro.jpg
-set $bg_img ~/Pictures/somewhereinjapan.jpg
-exec_always feh --bg-scale $bg_img
-exec_always --no-startup-id nm-applet
-
-# start urxvt daemon
-exec_always urxvtd -f
-
-# Workaround: Prevent Android emulator from flickering
-for_window [title="Android Emulator - nexus5:5554"] floating enable
+# this configuration is for the i3 gaps fork
 
 # set Super key as Mod-Key
 set $mod Mod1
 
-# Set Border size for all containers
-for_window [class="^.*"] border pixel 0
 
+#==---------------+==================+---------------==
+#==------------+== ==+-------------==
+#==------------+======================+---------------==
+
+
+#==---------------+==================+---------------==
+#==------------+== Startup Programs ==+-------------==
+#==------------+======================+---------------==
+
+# set background
+set $bg_img ~/Pictures/somewhereinjapan.jpg
+exec_always feh --bg-scale $bg_img
+
+# NetworkManager applet
+exec_always --no-startup-id nm-applet
+
+# bluetooth applet
+exec_always --no-startup-id blueman-applet
+
+# start compton, window compositor
+# exec_always "pkill picom; picom --config ~/.config/i3/compton.conf"
+exec_always "pkill picom; picom --config ~/.config/i3/mario_compton.conf"
+
+# start the urxvt daemon. Starts new terminals faster
+exec_always urxvtd -f
+
+#==------------+======================+---------------==
+#==----------+== Window Configuration +==------------==
+#==------------+======================+---------------==
+
+# set window gaps
 gaps inner 20
 gaps outer 20
 smart_gaps on
 
-exec_always "pkill compton; compton --config ~/.config/i3/compton.conf"
+# Workaround: Prevent Android emulator from flickering
+for_window [title="Android Emulator - nexus5:5554"] floating enable
+
+# Set Border size for all containers
+for_window [class="^.*"] border pixel 0
 
 # give visual indication for focused window
 # class        border  backgr. text    indicator child_border
 client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
 
-# Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.  This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
 # font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Screenshot hotkey
-bindsym $mod+p exec gnome-screenshot -i
+#==------------+======================+---------------==
+#==------------+== Keyboard Shortcuts +==-------------==
+#==------------+======================+---------------==
+
+
+# screenshot hotkey. Flameshot rules
+bindsym $mod+p exec flameshot gui
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec urxvtc
 
 # I usually connect the monitor right of my laptop on HDMI port
@@ -143,10 +166,13 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # Pulse Audio controls
 # get the correct sink using "pactl list short sinks"
-set $sink 1
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle # mute sound
+set $sink 0
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle # mute sound
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -158,7 +184,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # lock on Mod+shift+X
-bindsym $mod+Shift+X exec "i3lock-fancy -p -- scrot -q20"
+bindsym $mod+Shift+X exec i3lock-fancy -t "You shall not pass" -p -- scrot -z -o
 
 # change scroll direction of touchpad
 exec --no-startup-id synclient VertScrollDelta=-111
@@ -198,6 +224,6 @@ bindsym $mod+r mode "resize"
 bar {
   status_command SCRIPT_DIR=blocklets i3blocks
   font xft:SauceCodePro Nerd Font 12
-  separator_symbol ":|:"
+  separator_symbol " :|: "
   position top
 }

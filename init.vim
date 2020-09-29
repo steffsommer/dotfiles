@@ -11,7 +11,6 @@
 " ===============================
 
 syntax enable
-set termguicolors
 set number
 set relativenumber
 set nohlsearch
@@ -34,6 +33,7 @@ set incsearch
 set autoread
 set undofile
 set undodir=/tmp
+set mouse +=a
 
 " use system clipboard for copy/paste operations
 set clipboard+=unnamedplus
@@ -68,8 +68,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 "+=--------------=+ LANGAGE SPECIFICS +=--------------=+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'lervag/vimtex'
-  Plug 'Konfekt/FastFold'
-  Plug 'matze/vim-tex-fold'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'thosakwe/vim-flutter'
 "+=----------------=+ QUALITY OF LIFE +=----------------=+
@@ -82,7 +80,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'puremourning/vimspector'
 call plug#end()
 
-colorscheme tender
+colorscheme gruvbox
 
 " ===============================
 " ===== COC COMPAT SETTINGS =====
@@ -176,9 +174,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
