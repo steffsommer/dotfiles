@@ -1,3 +1,4 @@
+
 [mediaplayer]
 command=$SCRIPT_DIR/mediaplayer
 instance=spotify

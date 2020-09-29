@@ -226,4 +226,7 @@ bar {
   font xft:SauceCodePro Nerd Font 12
   separator_symbol " :|: "
   position top
+  colors {
+    background #282828
+  }
 }
