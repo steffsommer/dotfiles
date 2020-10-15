@@ -39,8 +39,8 @@ fi
 
 if ! command -v yay &> /dev/null
 then
-    echo "You need to install yay to sync packages"
-    exit
+  echo "You need to install yay to sync packages"
+  exit
 fi
 
 echo "upgrading System"
