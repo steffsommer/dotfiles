@@ -6,6 +6,7 @@ acpid
 adobe-source-code-pro-fonts
 adwaita-icon-theme
 alembic
+alsa-card-profiles
 alsa-lib
 alsa-plugins
 alsa-topology-conf
@@ -310,6 +311,7 @@ jre8-openjdk
 jre8-openjdk-headless
 js60
 js68
+js78
 json-c
 json-glib
 jsoncpp
@@ -404,6 +406,7 @@ libgudev
 libgusb
 libgxps
 libhandy
+libhandy0
 libheif
 libibus
 libical
@@ -623,7 +626,6 @@ mpg123
 msgpack-c
 msmtp
 mtdev
-mutt-wizard-git
 mypaint-brushes1
 nautilus
 ncurses
@@ -840,7 +842,6 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pybind11
-pygobject-devel
 python
 python-anytree
 python-appdirs
@@ -983,7 +984,6 @@ source-highlight
 spandsp
 speex
 speexdsp
-spotify
 sqlcipher
 sqlite
 sratom
@@ -1027,6 +1027,8 @@ tk
 totem-pl-parser
 tracker
 tracker-miners
+tracker3
+tracker3-miners
 tree
 tslib
 ttf-dejavu

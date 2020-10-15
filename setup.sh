@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ $EUID -eq 0 ]]; then
-   echo "You cannot run this script as root"
-   exit 1
+  echo "You cannot run this script as root"
+  exit 1
 fi
 
 declare -A filesToSymlink
@@ -14,17 +14,28 @@ filesToSymlink=(
   [".Xresources"]="/home/$USER/.Xresources"
 )
 
-DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # symlink all configured files
+echo "Symlinking dotfiles ..."
 for file in "${!filesToSymlink[@]}"
 do
-  # create directory structures if needed
+  echo "linking $file"
   mkdir -p $(dirname $file)
-  # TODO: actually symlink it
-  echo "key  : $SCRIPT_DIR/$file"
-  echo "value: ${filesToSymlink[$file]}"
+  origin_file_path=$dotfiles_dir/$file
+  link_target_path=${filesToSymlink[$file]}
+  ln -sf $origin_file_path $link_target_path
 done
+
+# check if the OS is Arch Linux
+os_raw="$(cat /etc/os-release | grep PRETTY_NAME)"
+pat='"(.*)"'
+[[ $os_raw =~ $pat ]];
+if [[ ${BASH_REMATCH[1]} != "Arch Linux" ]]
+then
+  echo "[INFO] Package synchronisation is only supported for Arch Linux. Exiting."
+  exit 1
+fi
 
 if ! command -v yay &> /dev/null
 then
@@ -32,4 +43,8 @@ then
     exit
 fi
 
-# TODO: install packages
+echo "upgrading System"
+yay -Syu
+
+echo "Installing packages ..."
+yay -S - < packages.txt
