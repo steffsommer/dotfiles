@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ $EUID -eq 0 ]]; then
-  echo "You cannot run this script as root"
+  echo "[ERR] You cannot run this script as root"
   exit 1
 fi
 
@@ -12,15 +12,16 @@ filesToSymlink=(
   ["i3blocks"]="/home/$USER/.config/i3blocks"
   [".zshrc"]="/home/$USER/.zshrc"
   [".Xresources"]="/home/$USER/.Xresources"
+  ["coc-settings.json"]="/home/$USER/.config/nvim/coc-settings.json"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # symlink all configured files
-echo "Symlinking dotfiles ..."
+echo "[INFO] Symlinking dotfiles ..."
 for file in "${!filesToSymlink[@]}"
 do
-  echo "linking $file"
+  echo "  -> linking $file"
   mkdir -p $(dirname $file)
   origin_file_path=$dotfiles_dir/$file
   link_target_path=${filesToSymlink[$file]}
@@ -39,12 +40,14 @@ fi
 
 if ! command -v yay &> /dev/null
 then
-  echo "You need to install yay to sync packages"
+  echo "[ERR] You need to install yay to sync packages"
   exit
 fi
 
-echo "upgrading System"
+echo "[INFO] Upgrading System ..."
 yay -Syu
 
-echo "Installing packages ..."
+echo "[INFO] Installing packages ..."
 yay -S - < packages.txt
+
+echo "[INFO} Done"
