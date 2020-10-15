@@ -50,4 +50,4 @@ yay -Syu
 echo "[INFO] Installing packages ..."
 yay -S - < packages.txt
 
-echo "[INFO} Done"
+echo "[INFO] Done"
