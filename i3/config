@@ -12,16 +12,11 @@ set $mod Mod1
 
 
 #==---------------+==================+---------------==
-#==------------+== ==+-------------==
-#==------------+======================+---------------==
-
-
-#==---------------+==================+---------------==
 #==------------+== Startup Programs ==+-------------==
 #==------------+======================+---------------==
 
 # set background
-set $bg_img ~/Pictures/somewhereinjapan.jpg
+set $bg_img ~/Pictures/big_hot_sun.png
 exec_always feh --bg-scale $bg_img
 
 # NetworkManager applet
@@ -175,8 +170,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+# increase screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl s 20%+
+# decrease screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl s 20%-
 
 # Media controls
 bindsym XF86AudioPlay exec playerctl play-pause

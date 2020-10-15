@@ -65,7 +65,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-"+=--------------=+ LANGAGE SPECIFICS +=--------------=+
+"+=--------------=+ LANGUAGE SPECIFICS +=--------------=+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'lervag/vimtex'
   Plug 'dart-lang/dart-vim-plugin'
@@ -73,7 +73,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 "+=----------------=+ QUALITY OF LIFE +=----------------=+
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
   Plug 'markstory/vim-zoomwin'
-  Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
 "+=----------------=+ OTHER +=----------------=+
   Plug 'tpope/vim-fugitive'
