@@ -56,8 +56,8 @@ alias i3conf='"$EDITOR" ~/.config/i3/config'
 
 # program shortcuts
 alias ssh_local="ssh flower@192.168.178.24 -p 40000"
-alias tldr="tldr -t base16"
 alias mensa="~/code/mensa/menu.py stwnodatasource"
+alias visp="~/code/fk_visp_3/VISP/Backend"
 
 # export TERM="xterm"
 

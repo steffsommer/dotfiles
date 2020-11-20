@@ -17,8 +17,8 @@ set nohlsearch
 set scrolloff=5
 set sidescrolloff=15
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set smarttab
 set conceallevel=0
 set nowrap
@@ -60,6 +60,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'frazrepo/vim-rainbow'
+  Plug 'calviken/vim-gdscript3'
+  Plug 'leafgarland/typescript-vim'
 "+=----------------=+ FILE HANDLING +=----------------=+
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
@@ -212,20 +214,7 @@ if has('nvim')
     let g:pudb_breakpoint_symbol='☠'
 endif
 
-
-" Execute FZF in a floating window
-function! FloatingFZF()
-    let width = float2nr(&columns * 0.8)
-    let height = float2nr(&lines * 0.6)
-    let opts = { 'relative': 'editor',
-               \ 'row': (&lines - height) / 2,
-               \ 'col': (&columns - width) / 2,
-               \ 'width': width,
-               \ 'height': height }
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-endfunction
-
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " enable rainbow brackets by default
 let g:rainbow_active = 1

@@ -10,7 +10,6 @@
 # set Super key as Mod-Key
 set $mod Mod1
 
-
 #==---------------+==================+---------------==
 #==------------+== Startup Programs ==+-------------==
 #==------------+======================+---------------==
@@ -46,6 +45,14 @@ for_window [title="Android Emulator - nexus5:5554"] floating enable
 
 # Set Border size for all containers
 for_window [class="^.*"] border pixel 0
+
+
+exec --no-startup-id urxvt -name urxvt_scratchpad -geometry 130x40
+for_window [instance="urxvt_scratchpad"] floating enable
+for_window [instance="urxvt_scratchpad"] move scratchpad
+for_window [instance="urxvt_scratchpad"] border pixel 7
+bindsym $mod+u scratchpad show, move position center
+
 
 # give visual indication for focused window
 # class        border  backgr. text    indicator child_border
