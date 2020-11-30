@@ -108,6 +108,7 @@ element-web
 elfutils
 embree
 enchant
+esy
 etcher-bin
 evince
 exempi
@@ -565,6 +566,7 @@ mtdev
 mypaint-brushes1
 mysql-python
 mysql-workbench
+nasm
 nautilus
 ncurses
 ndctl
@@ -579,9 +581,11 @@ networkmanager
 networkmanager-openvpn
 nextcloud-client
 nm-connection-editor
+node-gyp
 nodejs
 notify-osd
 noto-fonts
+npm
 npth
 nspr
 nss
@@ -611,6 +615,7 @@ openssl
 opensubdiv
 openvdb
 openvpn
+openxr
 opus
 orc
 os-prober
@@ -875,6 +880,7 @@ qt5-webkit
 qt5-x11extras
 qtkeychain
 qwt
+ragel
 rapidjson
 raptor
 rasqal
@@ -885,6 +891,7 @@ redland
 reflector
 rest
 rhash
+ripgrep
 rofi
 rpclib
 rsync
@@ -907,6 +914,7 @@ sdformat-6
 sdl2
 seahorse
 sed
+semver
 shadow
 shared-mime-info
 shellcheck
@@ -951,6 +959,7 @@ texlive-publishers
 texlive-science
 the_silver_searcher
 thin-provisioning-tools
+tig
 tinyxml
 tinyxml2
 tk

@@ -13,6 +13,7 @@ filesToSymlink=(
   [".zshrc"]="/home/$USER/.zshrc"
   [".Xresources"]="/home/$USER/.Xresources"
   ["coc-settings.json"]="/home/$USER/.config/nvim/coc-settings.json"
+  ["wallpapers"]="/home/$USER/Pictures/wallpapers"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

@@ -15,7 +15,7 @@ set $mod Mod1
 #==------------+======================+---------------==
 
 # set background
-set $bg_img ~/Pictures/big_hot_sun.png
+set $bg_img ~/Pictures/wallpapers/road.png
 exec_always feh --bg-scale $bg_img
 
 # NetworkManager applet
@@ -77,7 +77,8 @@ bindsym $mod+Return exec urxvtc
 
 # I usually connect the monitor right of my laptop on HDMI port
 # set HDMI input as right monitor
-exec xrandr --output HDMI1 --auto --right-of eDP1
+# exec xrandr --output HDMI1 --auto --right-of eDP1
+exec xrandr --output DP-1 --auto --right-of eDP-1 --output HDMI-1 --right-of DP-1
 
 # move windows between monitors
 bindsym $mod+n move workspace to output left

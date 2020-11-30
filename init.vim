@@ -78,6 +78,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'jiangmiao/auto-pairs'
 "+=----------------=+ OTHER +=----------------=+
   Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
   Plug 'puremourning/vimspector'
 call plug#end()
 
@@ -149,7 +150,8 @@ nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
 
 nmap <silent> <leader>nt :NERDTreeToggle<cr>
-nmap <leader>ff :Ag<cr>
+nmap <leader>ff :Rg <cr>
+
 nmap <leader>cp :GFiles<cr>
 nmap <Leader>vc :VimtexCompile<CR>
 
@@ -179,6 +181,9 @@ nmap <silent> gr <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
+" fix linter errors
+nmap <leader>fc <Plug>(coc-fix-current)
+
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
@@ -190,8 +195,14 @@ nmap <silent> <leader>q :bd<cr>
 " ============== OTHER ===============
 " ====================================
 
+" exclude filenames when searching with :Ag/fzf
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0) 
+
 " vim-Airline Settings
-let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 let g:airline_powerline_fonts = 1
 
 " close NERDTree if a file gets opened
