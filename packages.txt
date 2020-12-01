@@ -905,8 +905,8 @@ ruby-reline
 ruby-ronn
 rubygems
 run-parts
-rxvt-unicode
 rxvt-unicode-terminfo
+rxvt-unicode-truecolor
 sbc
 screenfetch
 scrot

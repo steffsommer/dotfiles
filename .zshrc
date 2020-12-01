@@ -18,6 +18,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:/opt/flutter-1.17.1/bin"
+export UPDATE_ZSH_DAYS=14
 
 ##############################################
 ############# OH MY ZSH SETTINGS #############
@@ -27,8 +28,7 @@ ZSH_THEME="agnoster"
 # ZSH_THEME="miloshadzic"
 
 
-# Automatically check for updates every 13 days
-export UPDATE_ZSH_DAYS=13
+# Automatically check for updates every 14 days
 
 # Load Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -43,12 +43,6 @@ source $ZSH/oh-my-zsh.sh
 ################## ALIASES ###################
 ##############################################
 
-# directory shortcuts
-alias graz="~/code/FK_VISP_GRAZ_SERVER/software/"
-alias orga="~/code/FK_ORGA/software/src"
-alias mcode="cd ~/code/autonomousdrone/code/simulation"
-alias marbeit="cd ~/code/autonomousdrone/arbeit"
-
 alias v="vim"
 alias vimrc='"$EDITOR" ~/.config/nvim/init.vim'
 alias zshrc='"$EDITOR" ~/.zshrc'
@@ -57,11 +51,8 @@ alias i3conf='"$EDITOR" ~/.config/i3/config'
 # program shortcuts
 alias ssh_local="ssh flower@192.168.178.24 -p 40000"
 alias mensa="~/code/mensa/menu.py stwnodatasource"
-alias visp="~/code/fk_visp_3/VISP/Backend"
+alias visp="~/code/fk_visp_3/VISP"
 
-# export TERM="xterm"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ##############################################
 ############### SHELL SETTINGS ###############
@@ -83,14 +74,6 @@ export KEYTIMEOUT=1
 # Checkout git branch using fzf
 chbr() {
     git checkout $(grep -o -e '[a-zA-Z0-9_]*' <<< $(git --no-pager branch) | fzf)
-}
-
-c() {
-  cd "$@" && ls
-}
-
-ku() {
-  kill -9 $(ps aux | grep Unity | head -n 1)  
 }
 
 source /usr/share/nvm/init-nvm.sh

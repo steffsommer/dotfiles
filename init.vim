@@ -38,7 +38,7 @@ set mouse +=a
 " use system clipboard for copy/paste operations
 set clipboard+=unnamedplus
 
-" slight highlight on line number and line where the carret is located
+" highlight on the line the carret is located
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
@@ -47,6 +47,8 @@ au FocusGained,BufEnter * :checktime
 
 let mapleader = ","
 
+set termguicolors
+
 " ===============================
 " ======= PLUGIN SECTION ========
 " ===============================
@@ -54,8 +56,8 @@ let mapleader = ","
 call plug#begin('~/.local/share/nvim/plugged')
 "+=----------------=+ LOOKS & SYNTAX +=----------------=+
   Plug 'morhetz/gruvbox'
-  Plug 'jacoborus/tender.vim'
-  Plug 'alessandroyorba/despacio'
+  Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'glepnir/oceanic-material'
   Plug 'Yggdroot/indentLine'
   Plug 'vim-airline/vim-airline'
   Plug 'PotatoesMaster/i3-vim-syntax'
@@ -126,87 +128,62 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " ===============================
-" =========== REMAPS ============
+" ========== KEY MAPS ===========
 " ===============================
 
 noremap <Leader>s :update<CR>
 
-" navigate between splits easier
+" navigate between windows easier
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" easier vertical resizing
+" vertical resizing
 nnoremap <silent> <leader>r+ :vertical resize +20<CR>
 nnoremap <silent> <leader>r- :vertical resize -20<CR>
-"! nnoremap <M-j>    :resize -2<CR>
-"! nnoremap <M-k>    :resize +2<CR>
-"! nnoremap <M-h>    :vertical resize -2<CR>
-"! nnoremap <M-l>    :vertical resize +2<CR>
 
-" Tab/Shift+Tab to circle buffers
-nnoremap <TAB> :bn<CR>
-nnoremap <S-TAB> :bp<CR>
-
-nmap <silent> <leader>nt :NERDTreeToggle<cr>
-nmap <leader>ff :Rg <cr>
-
+" Buffer and File management
+nnoremap <TAB> :bn<cr>
+nnoremap <S-TAB> :bp<cr>
+nmap <silent><leader>q :bd<cr>
+nmap <leader>b :Buffers<cr>
 nmap <leader>cp :GFiles<cr>
-nmap <Leader>vc :VimtexCompile<CR>
+nmap <leader>ff :Rg <cr>
+nmap <silent> <leader>nt :NERDTreeToggle<cr>
 
-" 2 character search motion
-nmap + <Plug>(easymotion-s2)
-
-" Mardown preview
+" triggers for specific plugin functionality
 nmap <leader>mb :MarkdownPreview<cr>
 nmap <leader>ms :MarkdownPreviewStop<cr>
+nmap <Leader>vc :VimtexCompile<cr>
 
-"fancy git graph
-nmap <leader>gg :terminal git lg2<cr>
-
-" reload config
+" reload init.vim
 nmap <leader>rc :so ~/.config/nvim/init.vim<cr>
 
-" error next/previous
-nmap <leader> en <Plug>(coc-diagnostic-prev)
-nmap <leader> ep <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Remap for rename current word
+" coc-mappings
+nmap <leader>en <Plug>(coc-diagnostic-prev)
+nmap <leader>ep <Plug>(coc-diagnostic-next)
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gy <Plug>(coc-type-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-
-" fix linter errors
 nmap <leader>fc <Plug>(coc-fix-current)
-
-" Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-
-" Close Buffers fast
-nmap <silent> <leader>q :bd<cr>
 
 " ====================================
 " ============== OTHER ===============
 " ====================================
 
-" exclude filenames when searching with :Ag/fzf
+" exclude filenames when searching with ripgrep
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0) 
 
 " vim-Airline Settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
 let g:airline_powerline_fonts = 1
-
-" close NERDTree if a file gets opened
-" let NERDTreeQuitOnOpen=1
 
 " Latex Support
 let g:tex_flavor  = 'latex'
@@ -221,8 +198,8 @@ let g:vimtex_view_method = 'zathura'
 if has('nvim')
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python'
-    let g:pudb_python='/usr/bin/python'
-    let g:pudb_breakpoint_symbol='☠'
+    "let g:pudb_python='/usr/bin/python'
+    "let g:pudb_breakpoint_symbol='☠'
 endif
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }

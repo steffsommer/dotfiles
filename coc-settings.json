@@ -4,5 +4,5 @@
       "cache": false
   },
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "tsserver.maxTsServerMemory": 4096,
+  "tsserver.maxTsServerMemory": 4096
 }
