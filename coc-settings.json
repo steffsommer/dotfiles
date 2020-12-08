@@ -1,8 +1,8 @@
 {
-  "eslint.options": {
-      "resolvePluginsRelativeTo": ".",
-      "cache": false
-  },
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "tsserver.maxTsServerMemory": 4096
+    "eslint.options": {
+        "resolvePluginsRelativeTo": ".",
+        "cache": false
+    },
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "tsserver.maxTsServerMemory": 4096
 }

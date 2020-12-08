@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pacman -Q | awk '{print $1}' > packages.txt
+pacman -Qe | awk '{print $1}' > packages.txt
 
 git add -A
 git commit -m "update $(date | awk '{print $2,$3,$7}')"

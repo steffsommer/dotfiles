@@ -64,6 +64,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'frazrepo/vim-rainbow'
   Plug 'calviken/vim-gdscript3'
   Plug 'leafgarland/typescript-vim'
+ 
 "+=----------------=+ FILE HANDLING +=----------------=+
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
@@ -152,6 +153,17 @@ nmap <leader>cp :GFiles<cr>
 nmap <leader>ff :Rg <cr>
 nmap <silent> <leader>nt :NERDTreeToggle<cr>
 
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
 " triggers for specific plugin functionality
 nmap <leader>mb :MarkdownPreview<cr>
 nmap <leader>ms :MarkdownPreviewStop<cr>
@@ -177,11 +189,10 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " ====================================
 
 " exclude filenames when searching with ripgrep
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0) 
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -F ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0) 
 
 " vim-Airline Settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 

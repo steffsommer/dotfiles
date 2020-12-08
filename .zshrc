@@ -50,7 +50,7 @@ alias i3conf='"$EDITOR" ~/.config/i3/config'
 
 # program shortcuts
 alias ssh_local="ssh flower@192.168.178.24 -p 40000"
-alias mensa="~/code/mensa/menu.py stwnodatasource"
+alias mensa="python ~/code/mensa/menu.py stwnodatasource"
 alias visp="~/code/fk_visp_3/VISP"
 
 
@@ -86,3 +86,5 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
