@@ -64,7 +64,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'frazrepo/vim-rainbow'
   Plug 'calviken/vim-gdscript3'
   Plug 'leafgarland/typescript-vim'
- 
 "+=----------------=+ FILE HANDLING +=----------------=+
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
