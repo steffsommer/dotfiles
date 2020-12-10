@@ -18,17 +18,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:/opt/flutter-1.17.1/bin"
-export UPDATE_ZSH_DAYS=14
 
 ##############################################
 ############# OH MY ZSH SETTINGS #############
 ##############################################
 
 ZSH_THEME="agnoster"
-# ZSH_THEME="miloshadzic"
-
 
 # Automatically check for updates every 14 days
+export UPDATE_ZSH_DAYS=14
 
 # Load Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*

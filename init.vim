@@ -10,7 +10,6 @@
 " ====== GENERAL SETTINGS =======
 " ===============================
 
-syntax enable
 set number
 set relativenumber
 set nohlsearch
@@ -20,7 +19,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set smarttab
-set conceallevel=0
 set nowrap
 set autoindent
 set smartindent
@@ -54,16 +52,14 @@ set termguicolors
 " ===============================
 
 call plug#begin('~/.local/share/nvim/plugged')
-"+=----------------=+ LOOKS & SYNTAX +=----------------=+
-  Plug 'morhetz/gruvbox'
-  Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'glepnir/oceanic-material'
+"+=----------------=+ SYNTAX +=----------------=+
   Plug 'Yggdroot/indentLine'
   Plug 'vim-airline/vim-airline'
   Plug 'PotatoesMaster/i3-vim-syntax'
-  Plug 'frazrepo/vim-rainbow'
-  Plug 'calviken/vim-gdscript3'
   Plug 'leafgarland/typescript-vim'
+"+=----------------=+ THEMES +=----------------=+
+  Plug 'morhetz/gruvbox'
+  Plug 'drewtempelmeyer/palenight.vim'
 "+=----------------=+ FILE HANDLING +=----------------=+
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
@@ -72,8 +68,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 "+=--------------=+ LANGUAGE SPECIFICS +=--------------=+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'lervag/vimtex'
-  Plug 'dart-lang/dart-vim-plugin'
-  Plug 'thosakwe/vim-flutter'
 "+=----------------=+ QUALITY OF LIFE +=----------------=+
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
   Plug 'markstory/vim-zoomwin'
@@ -82,6 +76,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   Plug 'puremourning/vimspector'
+"+=----------------=+ BACKUP +=----------------=+
+"Plug 'calviken/vim-gdscript3'
+"Plug 'dart-lang/dart-vim-plugin'
+"Plug 'thosakwe/vim-flutter'
 call plug#end()
 
 colorscheme gruvbox
