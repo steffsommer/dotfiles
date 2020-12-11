@@ -36,6 +36,7 @@ efibootmgr
 element-desktop
 etcher-bin
 evince
+evolution
 fakeroot
 feh
 file

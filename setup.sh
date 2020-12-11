@@ -15,7 +15,7 @@ filesToSymlink=(
   ["coc-settings.json"]="/home/$USER/.config/nvim/coc-settings.json"
   ["wallpapers"]="/home/$USER/Pictures/wallpapers"
   [".gitconfig"]="/home/$USER/.gitconfig"
-  ["tigrc"]="/home/$USER/.config/tigrc"
+  [".tigrc"]="/home/$USER/.tigrc"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

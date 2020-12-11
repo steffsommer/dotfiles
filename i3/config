@@ -46,12 +46,24 @@ for_window [title="Android Emulator - nexus5:5554"] floating enable
 # Set Border size for all containers
 for_window [class="^.*"] border pixel 0
 
+#==------------+======================+---------------==
+#==----------+== Scratchpads +==------------==
+#==------------+======================+---------------==
 
-exec --no-startup-id urxvt -name urxvt_scratchpad -geometry 130x40
+set $scratchpad_border_pixel 7
+
+exec --no-startup-id urxvt -name urxvt_scratchpad -geometry 170x45
 for_window [instance="urxvt_scratchpad"] floating enable
 for_window [instance="urxvt_scratchpad"] move scratchpad
-for_window [instance="urxvt_scratchpad"] border pixel 7
+for_window [instance="urxvt_scratchpad"] border pixel $scratchpad_border_pixel
 bindsym $mod+u scratchpad show, move position center
+
+exec --no-startup-id element-desktop -name element_scratchpad
+for_window [instance="element_scratchpad"] floating enable
+for_window [instance="element_scratchpad"] move scratchpad
+for_window [instance="element_scratchpad"] border pixel $scratchpad_border_pixel
+bindsym $mod+z scratchpad show, move position center
+
 
 
 # give visual indication for focused window
