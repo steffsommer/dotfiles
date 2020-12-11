@@ -10,30 +10,26 @@
 # set Super key as Mod-Key
 set $mod Mod1
 
-#==---------------+==================+---------------==
-#==------------+== Startup Programs ==+-------------==
-#==------------+======================+---------------==
+#+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+#
+#+=--------------------------=+ STARTUP PROGRAMS +=--------------------------=+#
+#+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+#
 
 # set background
 set $bg_img ~/Pictures/wallpapers/road.png
 exec_always feh --bg-scale $bg_img
 
-# NetworkManager applet
+# applets
 exec_always --no-startup-id nm-applet
-
-# bluetooth applet
 exec_always --no-startup-id blueman-applet
 
-# start compton, window compositor
-# exec_always "pkill picom; picom --config ~/.config/i3/compton.conf"
 exec_always "pkill picom; picom --config ~/.config/i3/mario_compton.conf"
 
 # start the urxvt daemon. Starts new terminals faster
 exec_always urxvtd -f
 
-#==------------+======================+---------------==
-#==----------+== Window Configuration +==------------==
-#==------------+======================+---------------==
+#+=------------------------=+ ~~~~~~~~~~~~~~~~~~~~ +=------------------------=+#
+#+=------------------------=+ WINDOW CONFIGURATION +=------------------------=+#
+#+=------------------------=+ ~~~~~~~~~~~~~~~~~~~~ +=------------------------=+#
 
 # set window gaps
 gaps inner 20
@@ -46,9 +42,9 @@ for_window [title="Android Emulator - nexus5:5554"] floating enable
 # Set Border size for all containers
 for_window [class="^.*"] border pixel 0
 
-#==------------+======================+---------------==
-#==----------+== Scratchpads +==------------==
-#==------------+======================+---------------==
+#+=----------------------------=+ ~~~~~~~~~~~ +=-----------------------------=+#
+#+=----------------------------=+ SCRATCHPADS +=-----------------------------=+#
+#+=----------------------------=+ ~~~~~~~~~~~ +=-----------------------------=+#
 
 set $scratchpad_border_pixel 7
 
@@ -76,10 +72,9 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#==------------+======================+---------------==
-#==------------+== Keyboard Shortcuts +==-------------==
-#==------------+======================+---------------==
-
+#+=-------------------------=+ ~~~~~~~~~~~~~~~~~~ +=-------------------------=+#
+#+=-------------------------=+ KEYBOARD SHORTCUTS +=-------------------------=+#
+#+=-------------------------=+ ~~~~~~~~~~~~~~~~~~ +=-------------------------=+#
 
 # screenshot hotkey. Flameshot rules
 bindsym $mod+p exec flameshot gui
