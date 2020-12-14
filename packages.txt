@@ -174,6 +174,7 @@ virtualbox
 virtualbox-guest-iso
 virtualbox-host-modules-arch
 visual-studio-code-bin
+vlc
 wget
 which
 whois

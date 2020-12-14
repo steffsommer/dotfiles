@@ -7,7 +7,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 # this configuration is for the i3 gaps fork
 
-# set Super key as Mod-Key
+# set Alt key as Mod-Key
 set $mod Mod1
 
 #+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+#
@@ -21,6 +21,7 @@ exec_always feh --bg-scale $bg_img
 # applets
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
+exec_always nextcloud
 
 exec_always "pkill picom; picom --config ~/.config/i3/mario_compton.conf"
 
@@ -53,14 +54,6 @@ for_window [instance="urxvt_scratchpad"] floating enable
 for_window [instance="urxvt_scratchpad"] move scratchpad
 for_window [instance="urxvt_scratchpad"] border pixel $scratchpad_border_pixel
 bindsym $mod+u scratchpad show, move position center
-
-exec --no-startup-id element-desktop -name element_scratchpad
-for_window [instance="element_scratchpad"] floating enable
-for_window [instance="element_scratchpad"] move scratchpad
-for_window [instance="element_scratchpad"] border pixel $scratchpad_border_pixel
-bindsym $mod+z scratchpad show, move position center
-
-
 
 # give visual indication for focused window
 # class        border  backgr. text    indicator child_border

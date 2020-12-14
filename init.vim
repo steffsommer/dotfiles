@@ -178,10 +178,14 @@ nmap <silent>gy <Plug>(coc-type-definition)
 nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-" nmap <leader>fc <Plug>(coc-fix-current)
 nmap <leader>fc <Plug>(coc-codeaction)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Switch between files of angular components fast
+nnoremap <leader>at :edit %<.ts<CR>
+nnoremap <leader>ah :edit %<.html<CR>
+nnoremap <leader>ac :edit %<.scss<CR>
 
 "+=-------------------------------=+ ~~~~~ +=--------------------------------=+"
 "+=-------------------------------=+ OTHER +=--------------------------------=+"
