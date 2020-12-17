@@ -1,0 +1,6 @@
+
+1. Herausfinden der Directory, die man mounten muss
+    smbclient -L 10.102.41.234 -U test
+
+2. Mounten der Directory
+    sudo mount -t cifs //10.102.41.234/90_tools /home/somsky/mounts -o user=test

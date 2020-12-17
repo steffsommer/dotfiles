@@ -61,6 +61,7 @@ google-chrome
 grep
 groff
 grub
+gvfs-smb
 gzip
 htop
 i3-gaps
@@ -131,6 +132,7 @@ rofi
 rpclib
 rsync
 rxvt-unicode-truecolor
+samba
 screenfetch
 scrot
 seahorse
