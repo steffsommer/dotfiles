@@ -15,15 +15,14 @@ set $mod Mod1
 #+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+#
 
 # set background
-set $bg_img ~/Pictures/wallpapers/road.png
+set $bg_img ~/Pictures/serenity.jpg
 exec_always feh --bg-scale $bg_img
 
 # applets
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
-exec_always nextcloud
 
-exec_always "pkill picom; picom --config ~/.config/i3/mario_compton.conf"
+exec_always "pkill picom; picom --config ~/code/dotfiles/i3/mario_compton.conf"
 
 # start the urxvt daemon. Starts new terminals faster
 exec_always urxvtd -f
