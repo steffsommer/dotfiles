@@ -16,6 +16,7 @@ filesToSymlink=(
   ["wallpapers"]="/home/$USER/Pictures/wallpapers"
   [".gitconfig"]="/home/$USER/.gitconfig"
   [".tigrc"]="/home/$USER/.tigrc"
+  ["alacritty"]="/home/$USER/.tigrc"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
