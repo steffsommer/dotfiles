@@ -33,6 +33,7 @@ set undofile
 set undodir=/tmp
 set mouse +=a
 
+
 " use system clipboard for copy/paste operations
 set clipboard+=unnamedplus
 
@@ -45,7 +46,6 @@ au FocusGained,BufEnter * :checktime
 
 let mapleader = ","
 
-set termguicolors
 
 "+=---------------------------=+ ~~~~~~~~~~~~~~ +=---------------------------=+"
 "+=---------------------------=+ PLUGIN SECTION +=---------------------------=+"
@@ -57,32 +57,37 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'leafgarland/typescript-vim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "+=----------------=+ THEMES +=----------------=+
-  Plug 'morhetz/gruvbox'
-  Plug 'drewtempelmeyer/palenight.vim'
-"+=----------------=+ FILE HANDLING +=----------------=+
+  "Plug 'morhetz/gruvbox'
+  "Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'sainnhe/sonokai'
+  Plug 'mhartington/oceanic-next'
+  Plug 'rktjmp/lush.nvim', {'branch': 'main'}
+  Plug 'npxbr/gruvbox.nvim', {'branch': 'main'}
+  "+=----------------=+ FILE HANDLING +=----------------=+
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-"+=--------------=+ LANGUAGE SPECIFICS +=--------------=+
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'lervag/vimtex'
 "+=----------------=+ QUALITY OF LIFE +=----------------=+
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-  Plug 'markstory/vim-zoomwin'
   Plug 'jiangmiao/auto-pairs'
-"+=----------------=+ OTHER +=----------------=+
+"+=----------------=+ ADDITIONAL FUNCTIONALITY +=----------------=+
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
-  Plug 'puremourning/vimspector'
 "+=----------------=+ BACKUP +=----------------=+
+"Plug 'puremourning/vimspector'
 "Plug 'calviken/vim-gdscript3'
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'thosakwe/vim-flutter'
 call plug#end()
 
-colorscheme gruvbox
+
+set termguicolors
+syntax on
+colorscheme OceanicNext
 
 "+=------------------------=+ ~~~~~~~~~~~~~~~~~~~ +=-------------------------=+"
 "+=------------------------=+ COC COMPAT SETTINGS +=-------------------------=+"
@@ -187,6 +192,17 @@ nnoremap <leader>at :edit %<.ts<CR>
 nnoremap <leader>ah :edit %<.html<CR>
 nnoremap <leader>ac :edit %<.scss<CR>
 
+" Treesitter SETUP
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true
+  },
+}
+EOF
+
 "+=-------------------------------=+ ~~~~~ +=--------------------------------=+"
 "+=-------------------------------=+ OTHER +=--------------------------------=+"
 "+=-------------------------------=+ ~~~~~ +=--------------------------------=+"
@@ -199,16 +215,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
-" Latex Support
-let g:tex_flavor  = 'latex'
-let g:tex_conceal = ''
-let g:vimtex_fold_manual = 1
-let g:vimtex_latexmk_continuous = 1
-let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_view_method = 'zathura'
-
-" Nvim python environment settings
-" used for pudb plugin
 if has('nvim')
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python'
@@ -225,8 +231,6 @@ let g:rainbow_active = 1
 let g:vimtex_compiler_latexmk = {
     \ 'build_dir' : 'latexbuild',
     \}
-
-let g:vimspector_enable_mappings = 'HUMAN'
 
 " vim markdown browser
 let g:mkdp_browser = 'firefox'
