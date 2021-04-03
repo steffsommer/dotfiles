@@ -24,6 +24,9 @@ exec_always --no-startup-id blueman-applet
 
 exec_always "pkill picom; picom --config ~/code/dotfiles/i3/mario_compton.conf"
 
+# status bar
+exec_always "pkill polybar; polybar -c /home/$USER/code/dotfiles/polybar.config steff"
+
 #+=------------------------=+ ~~~~~~~~~~~~~~~~~~~~ +=------------------------=+#
 #+=------------------------=+ WINDOW CONFIGURATION +=------------------------=+#
 #+=------------------------=+ ~~~~~~~~~~~~~~~~~~~~ +=------------------------=+#
@@ -222,12 +225,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-  status_command SCRIPT_DIR=blocklets i3blocks
-  font xft:SauceCodePro Nerd Font 12
-  separator_symbol " :|: "
-  position top
-  colors {
-    background #282828
-  }
-}
+# bar {
+#   status_command SCRIPT_DIR=blocklets i3blocks
+#   font xft:SauceCodePro Nerd Font 12
+#   separator_symbol " :|: "
+#   position top
+#   colors {
+#     background #282828
+#   }
+# }

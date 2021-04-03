@@ -58,6 +58,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'leafgarland/typescript-vim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'chrisbra/Colorizer'
 "+=----------------=+ THEMES +=----------------=+
   "Plug 'morhetz/gruvbox'
   "Plug 'drewtempelmeyer/palenight.vim'
