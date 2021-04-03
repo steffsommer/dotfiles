@@ -17,6 +17,7 @@ filesToSymlink=(
   [".gitconfig"]="/home/$USER/.gitconfig"
   [".tigrc"]="/home/$USER/.tigrc"
   ["alacritty.yml"]="/home/$USER/.config/alacritty/alacritty.yml"
+  ["scripts/setupMonitors.sh"]="/usr/bin/setupMonitors"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -29,7 +30,7 @@ do
   mkdir -p $(dirname $file)
   origin_file_path=$dotfiles_dir/$file
   link_target_path=${filesToSymlink[$file]}
-  ln -sf $origin_file_path $link_target_path
+  sudo ln -sf $origin_file_path $link_target_path
 done
 
 # check if the OS is Arch Linux

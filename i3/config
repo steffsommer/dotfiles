@@ -22,10 +22,14 @@ exec_always feh --bg-scale $bg_img
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
 
+# picom, window compostior. fancy effects for windows
 exec_always "pkill picom; picom --config ~/code/dotfiles/i3/mario_compton.conf"
 
 # status bar
 exec_always "pkill polybar; polybar -c /home/$USER/code/dotfiles/polybar.config steff"
+
+# setup the order of the monitors and the primary monitor
+exec_always "setupMonitors"
 
 #+=------------------------=+ ~~~~~~~~~~~~~~~~~~~~ +=------------------------=+#
 #+=------------------------=+ WINDOW CONFIGURATION +=------------------------=+#
