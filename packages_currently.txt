@@ -1,6 +1,5 @@
 acpi
 acpid
-afdko
 alacritty
 alsa-plugins
 alsa-utils
@@ -45,6 +44,8 @@ findutils
 firefox
 flameshot
 flex
+forticlient
+forticlientsslvpn
 gawk
 gcc
 gdb
@@ -74,7 +75,6 @@ iw
 jdk8-openjdk
 keepass
 latex-mk
-lazygit
 lib32-nvidia-utils
 libc++
 libgnome-keyring
@@ -119,11 +119,9 @@ picom
 pkgconf
 playerctl
 polybar
-proton-ge-custom-bin
 pulseaudio
 pulseaudio-alsa
 python
-python-fontparts
 python-pip
 python-virtualenv
 python2
@@ -135,7 +133,6 @@ rxvt-unicode-patched-with-truecolor
 screenfetch
 scrot
 sed
-signal-desktop
 smartgit
 spotify
 steam
@@ -171,7 +168,6 @@ vifm
 virtualbox
 virtualbox-host-modules-arch
 visual-studio-code-bin
-volctl
 wget
 which
 whois
