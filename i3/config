@@ -15,7 +15,7 @@ set $mod Mod1
 #+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+#
 
 # set background
-set $bg_img ~/Pictures/serenity.jpg
+set $bg_img ~/Pictures/lake.jpg
 exec_always feh --bg-scale $bg_img
 
 # applets

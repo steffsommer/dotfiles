@@ -50,6 +50,11 @@ alias i3conf='"$EDITOR" ~/.config/i3/config'
 alias ssh_local="ssh flower@192.168.178.24 -p 40000"
 alias mensa="python ~/code/mensa/menu.py stwnodatasource"
 alias visp="~/code/fk_visp_3/VISP"
+alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 
 ##############################################
