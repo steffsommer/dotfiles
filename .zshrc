@@ -18,6 +18,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:/opt/flutter-1.17.1/bin"
+export EDITOR="nvim"
 
 ##############################################
 ############# OH MY ZSH SETTINGS #############

@@ -1,8 +1,6 @@
 [user]
-	email = stefan.sommer@diovision.net
+	email = stefan.sommer.per@gmail.com
 	name = Stefan Sommer
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
 [alias]
     a = add
     c = commit
@@ -19,15 +17,9 @@
     f = fetch
     fa = fetch --all
     rb = rebase
-    rbi = "!sh -c \"git rebase -i HEAD~$1\" -"
     rbc = rebase --continue
     unstage = reset HEAD --
 [commit]
     verbose=true
-[rerere]
-    enabled=true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[credential]
+	helper = store
