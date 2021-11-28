@@ -39,7 +39,7 @@ nnoremap <leader>9 <Cmd>call VSCodeNotify('workbench.action.openEditorAtIndex9')
 " Open explorer
 nnoremap <leader>oe <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
 
-" Find in Project
+" Search in Project
 nnoremap <leader>fp <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
 
 " Ctrl + P, Open File by Name Matching
@@ -85,3 +85,12 @@ nnoremap <leader>ff <Cmd>call VSCodeNotify('editor.action.formatDocument')<CR>
 
 " write file (save cannot be used to to the split vertically (sv) binding)
 nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
+
+" comment out lines
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
+
+" use system clipboard
+set clipboard+=unnamedplus
