@@ -9,6 +9,13 @@
 
 " author: steffsommer
 
+set nohlsearch
+set incsearch
+set smartcase
+
+" use system clipboard
+set clipboard+=unnamedplus
+
 "+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+"
 "+=--------------------------=+ KEYBOARD MAPPING +=--------------------------=+"
 "+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+"
@@ -91,6 +98,3 @@ xmap gc  <Plug>VSCodeCommentary
 nmap gc  <Plug>VSCodeCommentary
 omap gc  <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
-
-" use system clipboard
-set clipboard+=unnamedplus
