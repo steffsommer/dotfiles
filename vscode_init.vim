@@ -98,3 +98,15 @@ xmap gc  <Plug>VSCodeCommentary
 nmap gc  <Plug>VSCodeCommentary
 omap gc  <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
+
+" use system clipboard
+set clipboard+=unnamedplus
+
+
+
+""""""" Angular File Switcher Extension """""""
+nnoremap <leader>at <Cmd>call VSCodeNotify('ng-file-switcher.openTypescript')<CR>
+nnoremap <leader>ah <Cmd>call VSCodeNotify('ng-file-switcher.openHTML')<CR>
+nnoremap <leader>ac <Cmd>call VSCodeNotify('ng-file-switcher.openStyle')<CR>
+nnoremap <leader>as <Cmd>call VSCodeNotify('ng-file-switcher.openTest')<CR>
+
