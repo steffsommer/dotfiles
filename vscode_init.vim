@@ -67,6 +67,9 @@ nnoremap <leader>Ep <Cmd>call VSCodeNotify('editor.action.marker.editor.action.m
 " go to definition
 nnoremap <leader>gd <Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>
 
+" go to reference (opens list if more then one)
+nnoremap <leader>gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
+
 " go to symbol
 nnoremap <leader>gs <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
 
@@ -76,6 +79,13 @@ nnoremap <leader>gs <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<CR
 
 " rename Symbol
 nnoremap <leader>rn <Cmd>call VSCodeNotify('editor.action.rename')<CR>
+
+""""""" Change surrounding brackets using bracketeer """""""
+
+nnoremap <leader>trb <Cmd> call VSCodeNotify('bracketeer.removeBrackets')<CR>
+nnoremap <leader>tcb <Cmd> call VSCodeNotify('bracketeer.changeBracketsTo')<CR>
+nnoremap <leader>trq <Cmd> call VSCodeNotify('bracketeer.removeQuotes')<CR>
+nnoremap <leader>tcq <Cmd> call VSCodeNotify('bracketeer.changeQuotesTo')<CR>
 
 
 """"""" other """""""
@@ -102,6 +112,8 @@ nmap gcc <Plug>VSCodeCommentaryLine
 " use system clipboard
 set clipboard+=unnamedplus
 
+nnoremap <leader>ly "0p
+nnoremap <leader>ld "1p
 
 
 """"""" Angular File Switcher Extension """""""
@@ -110,3 +122,10 @@ nnoremap <leader>ah <Cmd>call VSCodeNotify('ng-file-switcher.openHTML')<CR>
 nnoremap <leader>ac <Cmd>call VSCodeNotify('ng-file-switcher.openStyle')<CR>
 nnoremap <leader>as <Cmd>call VSCodeNotify('ng-file-switcher.openTest')<CR>
 
+"""""" git """"""
+nnoremap <leader>gcn <Cmd>call VSCodeNotify('merge-conflict.next')<CR>
+nnoremap <leader>gcp <Cmd>call VSCodeNotify('merge-conflict.previous')<CR>
+nnoremap <leader>gas <Cmd>call VSCodeNotify('merge-conflict.accept.selection')<CR>
+nnoremap <leader>gac <Cmd>call VSCodeNotify('merge-conflict.accept.current')<CR>
+nnoremap <leader>gai <Cmd>call VSCodeNotify('merge-conflict.accept.incoming')<CR>
+nnoremap <leader>gab <Cmd>call VSCodeNotify('merge-conflict.accept.both')<CR>
