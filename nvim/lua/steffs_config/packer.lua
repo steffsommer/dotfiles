@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
   use "phha/zenburn.nvim"
   use "yazeed1s/minimal.nvim"
   use "mhartington/oceanic-next"
-  use "rebelot/kanagawa.nvim"
   use "rmehri01/onenord.nvim"
   use "EdenEast/nightfox.nvim"
   use "shaunsingh/moonlight.nvim"
@@ -84,5 +83,7 @@ return require('packer').startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
+
+  use { "williamboman/mason.nvim" }
 
 end)
