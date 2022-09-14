@@ -11,6 +11,16 @@ return require('packer').startup(function(use)
   use "rebelot/kanagawa.nvim"
   use "phha/zenburn.nvim"
   use "yazeed1s/minimal.nvim"
+  use "mhartington/oceanic-next"
+  use "rebelot/kanagawa.nvim"
+  use "rmehri01/onenord.nvim"
+  use "EdenEast/nightfox.nvim"
+  use "shaunsingh/moonlight.nvim"
+  use "savq/melange"
+  use "yonlu/omni.vim"
+  use "folke/tokyonight.nvim"
+  use "marko-cerovac/material.nvim"
+  use "Abstract-IDE/Abstract-cs"
 
   -- all in this block is LSP/autocompletion related
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -62,6 +72,17 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  -- auto close <tags>
   use 'windwp/nvim-ts-autotag'
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  }
 
 end)

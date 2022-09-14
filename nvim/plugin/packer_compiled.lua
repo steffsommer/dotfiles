@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Abstract-cs"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/Abstract-cs",
+    url = "https://github.com/Abstract-IDE/Abstract-cs"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -109,15 +114,45 @@ _G.packer_plugins = {
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
+  melange = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/melange",
+    url = "https://github.com/savq/melange"
+  },
   ["minimal.nvim"] = {
     loaded = true,
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/minimal.nvim",
     url = "https://github.com/yazeed1s/minimal.nvim"
   },
+  ["moonlight.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/moonlight.nvim",
+    url = "https://github.com/shaunsingh/moonlight.nvim"
+  },
+  ["neo-tree.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
+    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
@@ -150,6 +185,21 @@ _G.packer_plugins = {
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["oceanic-next"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/oceanic-next",
+    url = "https://github.com/mhartington/oceanic-next"
+  },
+  ["omni.vim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/omni.vim",
+    url = "https://github.com/yonlu/omni.vim"
+  },
+  ["onenord.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/onenord.nvim",
+    url = "https://github.com/rmehri01/onenord.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -164,6 +214,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/steff/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/steff/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,

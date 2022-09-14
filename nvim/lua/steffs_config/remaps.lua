@@ -7,7 +7,7 @@ local git_worktree = require('telescope').extensions.git_worktree
 ------------------------
 ------------------------
 
-vim.g.mapleader=" "
+vim.g.mapleader=","
 
 -- quick save
 nnoremap("<leader>s", ":update<CR>")
@@ -85,5 +85,10 @@ nnoremap('<leader>0', '<Cmd>BufferLast<CR>')
 -- NEOFORMAT --
 ------------------------
 
--- TODO; command: :Neoformat
 nnoremap('<leader>ff', ':Neoformat<CR>')
+
+------------------------
+-- NEOTREE --
+------------------------
+
+nnoremap('<leader>nt', ':Neotree filesystem toggle left<CR>')
