@@ -7,7 +7,7 @@ fi
 
 declare -A filesToSymlink
 filesToSymlink=(
-  ["init.vim"]="/home/$USER/.config/nvim/init.vim"
+  ["nvim"]="/home/$USER/.config/nvim"
   [".zshrc"]="/home/$USER/.zshrc"
   ["coc-settings.json"]="/home/$USER/.config/nvim/coc-settings.json"
   [".gitconfig"]="/home/$USER/.gitconfig"
