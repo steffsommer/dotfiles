@@ -184,5 +184,3 @@ require("neo-tree").setup({
   }
 })
 
--- open Neotree by default
-require("neo-tree").show()
