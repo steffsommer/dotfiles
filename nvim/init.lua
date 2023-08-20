@@ -1,2 +1,2 @@
-require("steffs_config")
+require("steff")
 
