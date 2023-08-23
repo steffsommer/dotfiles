@@ -52,6 +52,23 @@ vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
+
+-- NEOTEST
+local neotest = require("neotest")
+print(neotest.run)
+
+-- run nearest test
+--vim.keymap.set('<leader>tm', '<A-o>',neotest_runner.run())
+
+-- debug nearest test
+--vim.keymap.set('<leader>dt', '<A-o>', "<cmd>lua require('neotest').run.run({strategy = 'dap'}<cr>")
+
+-- stop nearest test
+--vim.keymap.set('<leader>tm', '<A-o>', "<cmd>lua require('neotest').run.stop()<cr>")
+
+-- run current file
+--vim.keymap.set('<leader>tf', '<A-o>', "<cmd>lua require('neotest').run.run(vim.fn.expand("%"))<cr>")
+
 local M = {}
 
 M.setupStandardLspKeybindings = function(opts)
@@ -61,7 +78,7 @@ M.setupStandardLspKeybindings = function(opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   vim.keymap.set('n', '<space>f', function()
     vim.lsp.buf.format { async = true }

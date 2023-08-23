@@ -24,6 +24,10 @@ cmp.setup({
     {name = 'nvim_lsp'},
     {name = 'cmp-nvim-lua'},
   },
+  preselect = "item",
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
   mapping = {
     ['<Tab>'] = cmp_action.tab_complete(),
     ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
