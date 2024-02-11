@@ -1,30 +1,29 @@
-#               __             
+#               __
 #   ____  _____/ /_  __________
 #  /_  / / ___/ __ \/ ___/ ___/
-#   / /_(__  ) / / / /  / /__  
-#  /___/____/_/ /_/_/   \___/  
-# author: somsky
+#   / /_(__  ) / / / /  / /__
+#  /___/____/_/ /_/_/   \___/
+# author: steff
 
 ##############################################
 ############ ENVIRONMENT SETTINGS ############
 ##############################################
 
 # oh-my-zsh installation directory
-export ZSH="/home/somsky/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # setup node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$PATH:/opt/flutter-1.17.1/bin"
 export EDITOR="nvim"
 
 ##############################################
 ############# OH MY ZSH SETTINGS #############
 ##############################################
 
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Automatically check for updates every 14 days
 export UPDATE_ZSH_DAYS=14
@@ -42,21 +41,24 @@ source $ZSH/oh-my-zsh.sh
 ################## ALIASES ###################
 ##############################################
 
-alias v="vim"
+alias v="nvim"
+alias vim="nvim"
 alias vimrc='"$EDITOR" ~/.config/nvim/init.vim'
 alias zshrc='"$EDITOR" ~/.zshrc'
 alias i3conf='"$EDITOR" ~/.config/i3/config'
 
-# program shortcuts
-alias ssh_local="ssh flower@192.168.178.24 -p 40000"
-alias mensa="python ~/code/mensa/menu.py stwnodatasource"
-alias visp="~/code/fk_visp_3/VISP"
-alias ls="lsd"
+# swap ls for lsd (if available)
+if command -v lsd &> /dev/null
+then
+  alias ls='lsd'
+fi
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+# directory aliases
+alias sb="cd ~/code/steffs_blog"
 
 ##############################################
 ############### SHELL SETTINGS ###############
@@ -85,4 +87,3 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
-
