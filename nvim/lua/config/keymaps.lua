@@ -5,17 +5,6 @@
 -- follow help file links
 vim.keymap.set("n", "ü", "<C-]>")
 
--- angular file switching (custom extension)
-vim.keymap.set("n", "<leader>at", function()
-  Open_sibling_file("ts")
-end, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ah", function()
-  Open_sibling_file("html")
-end, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ac", function()
-  Open_sibling_file("scss")
-end, { noremap = true, silent = true })
-
 vim.keymap.set("n", "<leader>as", function()
   Open_sibling_file("spec.ts")
 end, { noremap = true, silent = true })
@@ -40,3 +29,18 @@ vim.keymap.set("n", "+e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error"
 
 vim.keymap.set("n", "üw", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 vim.keymap.set("n", "+w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+
+local Util = require("lazyvim.util")
+vim.keymap.set("n", "<leader>cp", Util.telescope("files"), { desc = "Find Files (root dir)" })
+vim.keymap.set("n", "<leader>lg", Util.telescope("live_grep"), { desc = "grep (root dir)" })
+
+-- angular file switching (custom extension)
+vim.keymap.set("n", "<leader>at", function()
+  Open_sibling_file("ts")
+end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ah", function()
+  Open_sibling_file("html")
+end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ac", function()
+  Open_sibling_file("scss")
+end, { noremap = true, silent = true })

@@ -60,6 +60,13 @@ alias lt='ls --tree'
 # directory aliases
 alias sb="cd ~/code/steffs_blog"
 
+alias gs='git status'
+alias gaa='git add --all'
+alias gfa='git fetch --all'
+alias gl='git log'
+alias gp='git pull'
+alias gcm='git commit -m'
+
 ##############################################
 ############### SHELL SETTINGS ###############
 ##############################################
@@ -80,10 +87,10 @@ export KEYTIMEOUT=1
 source /usr/share/nvm/init-nvm.sh
 
 # colored man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\e[01;37m'       # begin bold
+export LESS_TERMCAP_me=$'\e[0m'           # end all mode like so, us, mb, md, mr
+export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\e[45;93m'       # start standout mode
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_us=$'\e[4;93m'        # start underlining
