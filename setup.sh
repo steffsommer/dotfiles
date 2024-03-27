@@ -10,6 +10,7 @@ filesToSymlink=(
   ["nvim"]="/home/$USER/.config/nvim"
   [".zshrc"]="/home/$USER/.zshrc"
   [".gitconfig"]="/home/$USER/.gitconfig"
+  ["tmux.conf"]="/home/$USER/.config/tmux/tmux.conf"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
