@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.guicursor = ""
 
 vim.opt.number = true
@@ -10,6 +12,7 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
+vim.opt.cmdheight = 0
 
 -- places } at the correct position in svelte files
 -- vim.opt.smartindent = true
@@ -27,5 +30,3 @@ vim.api.nvim_create_autocmd("FileType", {
   command = ":set number",
  })
 
-vim.cmd("colorscheme gruvbox-material")
---vim.g.gruvbox_material_foreground = 'original' -- material, mix or original
