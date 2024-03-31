@@ -1,3 +1,6 @@
 return {
-  'zootedb0t/citruszest.nvim',
+  {
+    'zootedb0t/citruszest.nvim',
+    priority = 1000,
+  }
 }
