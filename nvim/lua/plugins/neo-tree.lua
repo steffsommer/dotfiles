@@ -225,7 +225,7 @@ return {
         }
       })
 
-      vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+      vim.cmd([[nnoremap <leader>e :Neotree reveal<cr>]])
     end
 }
 
