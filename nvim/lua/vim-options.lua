@@ -21,7 +21,7 @@ vim.opt.wrap           = false
 vim.o.clipboard        = "unnamedplus"
 vim.opt.swapfile       = false
 
-vim.api.nvim_set_keymap("n", "<leader>w", ":update<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-w>", ":update<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":q<CR>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", { noremap = true })
