@@ -41,18 +41,14 @@ do
   dotfile_linux_target_path=${filesToSymlink[$file]}
   dotfile_windows_target_path=$(cygpath -d $dotfile_linux_target_path)
 
-  log_info "Linking $dotfile_linux_path to $dotfile_linux_target_path"
-
   mkdir -p $(dirname $dotfile_linux_target_path)
   if test -f $dotfile_linux_path
   then
-    rm -rf $dotfile_linux_path
+    rm -rf $dotfile_linux_target_path
     cmd "/C mklink /D $dotfile_windows_target_path $dotfile_windows_path"
   elif test -d $dotfile_linux_path
   then
-    rm -rf $dotfile_linux_path
-    echo $dotfile_windows_target_path 
-    echo $dotfile_windows_path
+    rm -rf $dotfile_linux_target_path
     cmd "/C mklink $dotfile_windows_target_path $dotfile_windows_path"
   else
     error_exit "$dotfile_linux_path does not exist and therefore cannot be linked. Exiting..."
