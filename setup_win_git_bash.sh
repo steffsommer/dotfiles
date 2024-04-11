@@ -36,10 +36,12 @@ log_info "Symlinking dotfiles ..."
 for file in "${!filesToSymlink[@]}"
 do
   dotfile_linux_path=$dotfiles_dir/$file
-  dotfile_windows_path=$(cygpath -d $dotfile_linux_path)
+  dotfile_windows_path=$(cygpath -w $dotfile_linux_path)
 
   dotfile_linux_target_path=${filesToSymlink[$file]}
-  dotfile_windows_target_path=$(cygpath -d $dotfile_linux_target_path)
+  echo "dotfile_linux_target_path $dotfile_linux_target_path"
+  dotfile_windows_target_path=$(cygpath -w $dotfile_linux_target_path)
+  echo "dotfile_windows_target_path $dotfile_windows_target_path"
 
   mkdir -p $(dirname $dotfile_linux_target_path)
   if test -f $dotfile_linux_path
