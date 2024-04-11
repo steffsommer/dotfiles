@@ -47,11 +47,11 @@ do
   if test -f $dotfile_linux_path
   then
     rm -rf $dotfile_linux_target_path
-    cmd "/C mklink /D $dotfile_windows_target_path $dotfile_windows_path"
+    cmd "/C mklink $dotfile_windows_target_path $dotfile_windows_path"
   elif test -d $dotfile_linux_path
   then
     rm -rf $dotfile_linux_target_path
-    cmd "/C mklink $dotfile_windows_target_path $dotfile_windows_path"
+    cmd "/C mklink /D $dotfile_windows_target_path $dotfile_windows_path"
   else
     error_exit "$dotfile_linux_path does not exist and therefore cannot be linked. Exiting..."
   fi
