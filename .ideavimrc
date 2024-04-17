@@ -1,0 +1,172 @@
+"   (_)___/ /__  ____ __   __(_)___ ___  __________
+"  / / __  / _ \/ __ `/ | / / / __ `__ \/ ___/ ___/
+" / / /_/ /  __/ /_/ /| |/ / / / / / / / /  / /__
+"/_/\__,_/\___/\__,_/ |___/_/_/ /_/ /_/_/   \___/
+
+" Written with <3 by steffsommer
+
+"+=-------------------------------=+ ~~~~~~~ +=------------------------------=+"
+"+=-------------------------------=+ OPTIONS +=------------------------------=+"
+"+=-------------------------------=+ ~~~~~~~ +=------------------------------=+"
+
+" Vim Options
+set number
+set relativenumber
+set nohlsearch
+set ignorecase
+set smartcase
+set incsearch
+set clipboard+=unnamed
+
+" Plugins
+set NERDTree
+set commentary
+set matchit
+set surround
+
+"+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+"
+"+=--------------------------=+ KEYBOARD MAPPING +=--------------------------=+"
+"+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+"
+
+"+=------------------------------=+ GENERAL +=-------------------------------=+"
+
+let mapleader = " "
+
+"+=-----------------------------=+ window and buffer management +=-----------------------------=+"
+
+" navigate between windows easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+nnoremap <c-9> :action StretchSplitToRight<CR>
+nnoremap <c-0> :action StretchSplitToLeft<CR>
+
+" Special UI modes
+map <leader>vz <action>(ToggleZenMode)
+map <leader>rf <action>(ToggleFullScreen)
+
+"window splitting
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+
+"window movement
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+" quick close windows
+nnoremap <Leader>bd :action CloseContent<CR>
+nnoremap <Leader>q :action CloseContent<CR>
+nnoremap <Leader>qa :action CloseAllEditors<CR>
+nnoremap <C-w> :action SaveAll<CR>
+
+"+=-----------------------------=+ NAVIGATION +=-----------------------------=+"
+
+" hopefully allow suggestion selection using c-j and c-k, untested so far
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+
+" Ctrl+P / Search files by name
+nnoremap <leader>cp :action GotoFile<CR>
+" Find files by content
+nnoremap <leader>lg :action FindInPath<CR>
+" open list of recently opened files
+map <leader><leader> <Action>(RecentFiles)
+" open a list with the recent edit? locations
+map <leader>fl <action>(RecentLocations)
+
+" Folding
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+
+" semantic navigation
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+"+=-----------------------------=+ LSP +=-----------------------------=+"
+
+" reading
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gD :action GotToDeclaration<CR>
+nnoremap gs :action GotoTest<CR>
+nnoremap gu :action ShowUsages<CR>
+
+" diagnostic movement
+nnoremap <C-n> :action GotoNextError<CR>
+nnoremap <C-m> :action GotoPreviousError<CR>
+"nnoremap ü :action GotoNextError<CR>
+"nnoremap Ü :action GotoPreviousError<CR>
+
+" writing
+nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>co :action OptimizeImports<CR>
+nnoremap <leader>xq :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>rm :action Move<CR>
+
+"+=-----------------------------=+ DEBUGGING +=-----------------------------=+"
+nnoremap <leader>cd :action ContextDebug<CR>
+nnoremap <leader>df :action DebugClass<CR>
+
+nnoremap <leader>tb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>di :action StepInto<CR>
+nnoremap <leader>db :action StepOut<CR>
+cnoremap <leader>do :action StepOver<CR>
+nnoremap <leader>de :action EvaluateExpression<CR>
+nnoremap <leader>dc :action RunToCursor<CR>
+nnoremap <leader>ds :action Stop<CR>
+
+"+=-----------------------------=+ GIT +=-----------------------------=+"
+nnoremap <leader>gc :action Git.CompareWithBranch<CR>
+
+"+=-----------------------------=+ MISC +=-----------------------------=+"
+
+
+nnoremap <leader>ve :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap <leader>ad :action ChooseDebugConfiguration<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+
+" open new scratch file
+map <leader>fs <action>(NewScratchFile)
+
+
+" not working yet, but I would like it better
+let g:NERDTreeMapQuit=<Esc>
+
+" using these to switch tabs takes much longer for some reason, so regular shortcuts
+" within the editor are preferred
+"nnoremap L :action NextTab<CR>
+"nnoremap H :action PreviousTab<CR>
+
+
+
+
+" NerdTree keybindings, just for reference
+" o	Open files, directories and bookmarks
+" go	Open selected file, but leave cursor in the NERDTree
+" t	Open selected node/bookmark in a new tab
+" T	Same as 't' but keep the focus on the current tab
+" i	Open selected file in a split window
+" gi	Same as i, but leave the cursor on the NERDTree
+" s	Open selected file in a new vsplit
+" gs	Same as s, but leave the cursor on the NERDTree
+" O	Recursively open the selected directory
+" x	Close the current nodes parent
+" X	Recursively close all children of the current node
+" P	Jump to the root node
+" p	Jump to current nodes parent
+" K	Jump up inside directories at the current tree depth
+" J	Jump down inside directories at the current tree depth
+" <C-J>	Jump down to next sibling of the current directory
+" <C-K>	Jump up to previous sibling of the current directory
+" r	Recursively refresh the current directory
+" R	Recursively refresh the current root
+" m	Display the NERDTree menu
+" q	Close the NERDTree window
+" A	Zoom (maximize/minimize) the NERDTree window
+
