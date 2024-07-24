@@ -96,10 +96,10 @@ nnoremap gs :action GotoTest<CR>
 nnoremap gu :action ShowUsages<CR>
 
 " diagnostic movement
-nnoremap <C-n> :action GotoNextError<CR>
-nnoremap <C-m> :action GotoPreviousError<CR>
-"nnoremap ü :action GotoNextError<CR>
-"nnoremap Ü :action GotoPreviousError<CR>
+"nnoremap <C-n> :action GotoNextError<CR>
+"nnoremap <C-m> :action GotoPreviousError<CR>
+nnoremap ü :action GotoNextError<CR>
+nnoremap Ü :action GotoPreviousError<CR>
 
 " writing
 nnoremap <leader>cr :action RenameElement<CR>
