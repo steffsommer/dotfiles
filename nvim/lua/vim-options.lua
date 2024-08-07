@@ -14,6 +14,7 @@ vim.opt.ignorecase     = true
 vim.opt.cmdheight      = 0
 vim.o.splitright       = true
 vim.o.splitbelow       = true
+vim.o.signcolumn       = "yes" 
 
 vim.opt.helpheight     = 99999
 

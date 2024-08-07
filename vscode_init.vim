@@ -21,7 +21,7 @@ set clipboard+=unnamedplus
 "+=--------------------------=+ ~~~~~~~~~~~~~~~~ +=--------------------------=+"
 
 
-let mapleader = ","
+let mapleader = " "
 
 
 """"""" navigation between windows """""""
