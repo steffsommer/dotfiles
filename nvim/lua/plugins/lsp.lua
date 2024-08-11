@@ -38,6 +38,7 @@ return {
 	},
 	{
 		"mfussenegger/nvim-jdtls",
+    lazy = false,
 		dependencies = {
 			"mfussenegger/nvim-dap",
 		},
@@ -70,10 +71,6 @@ return {
 				capabilities = capabilities,
 				root_dir = util.root_pattern("angular.json", "project.json"),
 			})
-			lspconfig.jdtls.setup({
-				capabilities = capabilities,
-			})
-
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
 			vim.api.nvim_create_autocmd("LspAttach", {

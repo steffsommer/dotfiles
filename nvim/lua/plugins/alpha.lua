@@ -21,7 +21,7 @@ return {
       dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("r", "  Recent", ":Telescope oldfiles<CR>"),
       dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-      dashboard.button("q", "  Quit", ":qa<CR>"),
+      dashboard.button("q", "ᛜ  Quit", ":qa<CR>"),
     }
 
     alpha.setup(dashboard.opts)
