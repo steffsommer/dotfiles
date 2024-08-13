@@ -54,7 +54,7 @@ end
 local function java_keymaps()
   -- Allow yourself to run JdtCompile as a Vim command
   vim.cmd(
-  "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)")
+    "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)")
   -- Allow yourself/register to run JdtUpdateConfig as a Vim command
   vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()")
   -- Allow yourself/register to run JdtBytecode as a Vim command
@@ -90,7 +90,6 @@ local function java_keymaps()
 end
 
 local function setup_jdtls()
-  print('setting up jdtls!')
   -- Get access to the jdtls plugin and all of its functionality
   local jdtls = require "jdtls"
 
@@ -106,28 +105,28 @@ local function setup_jdtls()
   -- Determine the root directory of the project by looking for these specific markers
   local root_dir = jdtls.setup.find_root({ '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' });
 
-  -- Tell our JDTLS language features it is capable of
-  local capabilities = {
-    workspace = {
-      configuration = true,
-      -- fileOperations were inserted custom based on https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#clientCapabilities
-      fileOperations = {
-        dynamicRegistration = true,
-        didCreate = true,
-        willCreate = true,
-        didRename = true,
-        willRename = true,
-        didDelete = true,
-        willDelete = true,
-      },
-    },
-    textDocument = {
-      completion = {
-        snippetSupport = false
-      }
-    }
-  }
-
+  -- -- Tell our JDTLS language features it is capable of
+  -- local capabilities = {
+  --   workspace = {
+  --     configuration = true,
+  --     -- fileOperations were inserted custom based on https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#clientCapabilities
+  --     fileOperations = {
+  --       dynamicRegistration = true,
+  --       didCreate = true,
+  --       willCreate = true,
+  --       didRename = true,
+  --       willRename = true,
+  --       didDelete = true,
+  --       willDelete = true,
+  --     },
+  --   },
+  --   textDocument = {
+  --     completion = {
+  --       snippetSupport = false
+  --     }
+  --   }
+  -- }
+  local capabilities = require 'lsp-file-operations'.default_capabilities();
   local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
   for k, v in pairs(lsp_capabilities) do capabilities[k] = v end
@@ -275,8 +274,6 @@ local function setup_jdtls()
     -- the debug tool, attempt to run the debug tool while in the main class of the application, or restart the neovim instance
     -- Unfortunately I have not found an elegant way to ensure this works 100%
     require('jdtls.dap').setup_dap_main_class_configs()
-    -- Enable jdtls commands to be used in Neovim
-    require 'jdtls.setup'.add_commands()
     -- Refresh the codelens
     -- Code lens enables features such as code reference counts, implemenation counts, and more.
     vim.lsp.codelens.refresh()
@@ -302,12 +299,11 @@ local function setup_jdtls()
 
   -- Start the JDTLS server
   vim.lsp.set_log_level("TRACE")
-  print('starting jdtls!')
   require('jdtls').start_or_attach(config)
 end
 
 return {
   setup_jdtls = setup_jdtls,
   get_jdtls = get_jdtls,
-  get_workspace=get_workspace,
+  get_workspace = get_workspace,
 }
