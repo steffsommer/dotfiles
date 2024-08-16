@@ -46,6 +46,16 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    opts = {
+      capabilities = {
+        workspace = {
+          fileOperations = {
+            didRename = true,
+            willRename = true,
+          },
+        },
+      },
+    },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -71,6 +81,7 @@ return {
         capabilities = capabilities,
         root_dir = util.root_pattern("angular.json", "project.json"),
       })
+
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -87,6 +98,9 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
           vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+
+          vim.keymap.set("n", "<leader>cR", require("util.lsp").rename_file, opts)
+
           -- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
           -- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
           -- vim.keymap.set("n", "<space>wl", function()

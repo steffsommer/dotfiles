@@ -87,6 +87,9 @@ local function java_keymaps()
   vim.keymap.set('n', '<leader>JT', "<Cmd> lua require('jdtls').test_class()<CR>", { desc = "[J]ava [T]est Class" })
   -- Set a Vim motion to <Space> + <Shift>J + u to update the project configuration
   vim.keymap.set('n', '<leader>Ju', "<Cmd> JdtUpdateConfig<CR>", { desc = "[J]ava [U]pdate Config" })
+
+  vim.keymap.set("n", "<leader>RF", require("steff.util.lsp").rename_file)
+  -- vim.keymap.set("n", "<leader>cR", function() print("it works") end)
 end
 
 local function setup_jdtls()
@@ -105,28 +108,7 @@ local function setup_jdtls()
   -- Determine the root directory of the project by looking for these specific markers
   local root_dir = jdtls.setup.find_root({ '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' });
 
-  -- -- Tell our JDTLS language features it is capable of
-  -- local capabilities = {
-  --   workspace = {
-  --     configuration = true,
-  --     -- fileOperations were inserted custom based on https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#clientCapabilities
-  --     fileOperations = {
-  --       dynamicRegistration = true,
-  --       didCreate = true,
-  --       willCreate = true,
-  --       didRename = true,
-  --       willRename = true,
-  --       didDelete = true,
-  --       willDelete = true,
-  --     },
-  --   },
-  --   textDocument = {
-  --     completion = {
-  --       snippetSupport = false
-  --     }
-  --   }
-  -- }
-  local capabilities = require 'lsp-file-operations'.default_capabilities();
+  local capabilities = require("nvim-lspconfig").default_capabilities();
   local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
   for k, v in pairs(lsp_capabilities) do capabilities[k] = v end
