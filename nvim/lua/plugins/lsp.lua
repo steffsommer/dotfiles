@@ -192,7 +192,7 @@ return {
 
 						local keymap_opts = { buffer = args.buf }
 						-- custom jdtls keymaps
-						vim.keymap.set("n", "<leader>tt", test_java_class, keymap_opts)
+						-- vim.keymap.set("n", "<leader>tt", test_java_class, keymap_opts)
 
 						-- Java Test require Java debugger to work
 						if opts.test and mason_registry.is_installed("java-test") then
