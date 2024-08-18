@@ -22,6 +22,7 @@ return {
 			"rcasia/neotest-java",
 		},
 		config = function()
+      vim.keymap.set("n", "<leader>nt", function() require("neotest").summary.toggle() end)
 			---@diagnostic disable: missing-fields
 			require("neotest").setup({
 				adapters = {
