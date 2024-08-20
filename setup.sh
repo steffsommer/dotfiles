@@ -8,7 +8,8 @@ fi
 declare -A filesToSymlink
 filesToSymlink=(
   ["nvim"]="/home/$USER/.config/nvim"
-  [".zshrc"]="/home/$USER/.zshrc"
+  # [".zshrc"]="/home/$USER/.zshrc"
+  [".bashrc"]="/home/$USER/.bashrc"
   [".gitconfig"]="/home/$USER/.gitconfig"
   ["tmux.conf"]="/home/$USER/.config/tmux/tmux.conf"
 )
@@ -23,7 +24,7 @@ do
   mkdir -p $(dirname ${filesToSymlink[$file]})
   origin_file_path=$dotfiles_dir/$file
   link_target_path=${filesToSymlink[$file]}
-  sudo ln -sf $origin_file_path $link_target_path
+  ln -sf $origin_file_path $link_target_path
 done
 
 echo "[INFO] Done."
