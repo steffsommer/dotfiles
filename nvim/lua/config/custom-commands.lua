@@ -1,4 +1,3 @@
-
 -- Switch to a file of the same name/path with only a different extension
 ---@param extension string File extension of the sibling file without a "." prefix, e.g. "ts" or "scss"
 local function angular_switch_sibling(extension)
@@ -11,7 +10,26 @@ local function angular_switch_sibling(extension)
   vim.cmd("e " .. sibling_path)
 end
 
-vim.keymap.set("n", "<leader>ah", function() angular_switch_sibling("html") end)
-vim.keymap.set("n", "<leader>at", function() angular_switch_sibling("ts") end)
-vim.keymap.set("n", "<leader>ac", function() angular_switch_sibling("scss") end)
-vim.keymap.set("n", "<leader>as", function() angular_switch_sibling("spec.ts") end)
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = {
+    "*.spec.ts",
+    "*.ts",
+    "*.html",
+    "*.scss",
+    "*.css",
+  },
+  callback = function()
+    vim.keymap.set("n", "<leader>ah", function()
+      angular_switch_sibling("html")
+    end)
+    vim.keymap.set("n", "<leader>at", function()
+      angular_switch_sibling("ts")
+    end)
+    vim.keymap.set("n", "<leader>ac", function()
+      angular_switch_sibling("scss")
+    end)
+    vim.keymap.set("n", "<leader>as", function()
+      angular_switch_sibling("spec.ts")
+    end)
+  end,
+})
