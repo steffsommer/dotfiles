@@ -20,7 +20,7 @@ return {
 		"williamboman/mason.nvim",
 		lazy = false,
 		opts = {
-			ensure_installed = {
+			ensure_installed = { -- this does not work
 				"java-debug-adapter",
 				"java-test",
 			},
@@ -46,6 +46,7 @@ return {
 				"svelte",
 				"html",
 				"jdtls",
+        "eslint-lsp",
 			},
 			handlers = {
 				["angularls"] = function()
@@ -409,6 +410,9 @@ return {
 				capabilities = capabilities,
 				root_dir = util.root_pattern("angular.json", "project.json"),
 			})
+      lspconfig.eslint.setup({
+				capabilities = capabilities,
+      })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer

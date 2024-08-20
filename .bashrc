@@ -79,3 +79,6 @@ export LESS_TERMCAP_so=$'\e[45;93m'       # start standout mode
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[4;93m'        # start underlining
 
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source "/usr/share/nvm/init-nvm.sh"
+fi
