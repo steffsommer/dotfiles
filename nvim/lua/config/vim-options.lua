@@ -32,20 +32,3 @@ vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", { noremap = true })
 
 vim.keymap.set("n", "<C-n>", vim.diagnostic.goto_next, {})
 vim.keymap.set("n", "<C-m>", vim.diagnostic.goto_prev, {})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help" },
-  callback = function()
-    vim.api.nvim_set_keymap("n", "gd", "<C-]>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "q", ":q<CR>", { noremap = true })
-    vim.opt.number = true
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "neo-tree" },
-  callback = function()
-    vim.opt.number = true
-  end
-})
-
