@@ -12,6 +12,7 @@ filesToSymlink=(
   [".bashrc"]="/home/$USER/.bashrc"
   [".gitconfig"]="/home/$USER/.gitconfig"
   ["tmux.conf"]="/home/$USER/.config/tmux/tmux.conf"
+  [".tigrc"]="/home/$USER/.tigrc"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

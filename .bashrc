@@ -1,3 +1,9 @@
+
+# source machine specific addons
+for filename in ~/.config/custom_bash_scripts/*; do
+	source $filename
+done
+
 ##############################################
 ############# OH MY BASH SETTINGS ############
 ##############################################

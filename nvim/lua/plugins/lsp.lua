@@ -40,13 +40,14 @@ return {
 		opts = {
 			auto_install = true,
 			ensure_installed = {
-				"tsserver",
-				"lua_ls",
 				"angularls",
-				"svelte",
+        "bashls",
+        "eslint-lsp",
 				"html",
 				"jdtls",
-        "eslint-lsp",
+				"lua_ls",
+				"svelte",
+				"tsserver",
 			},
 			handlers = {
 				["angularls"] = function()

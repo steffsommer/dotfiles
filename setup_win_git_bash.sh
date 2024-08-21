@@ -25,7 +25,7 @@ fi
 
 declare -A filesToSymlink
 filesToSymlink=(
-  ["nvim"]="/c/Users/$user/AppData/Local/nvim"
+.tigrc"nvim"]="/c/Users/$user/AppData/Local/nvim"
   [".ideavimrc"]="/c/Users/$user/.ideavimrc"
   [".tigrc"]="/c/Users/$user/.tigrc"
 )
