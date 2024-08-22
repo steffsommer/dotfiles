@@ -42,7 +42,7 @@ return {
 			ensure_installed = {
 				"angularls",
         "bashls",
-        "eslint-lsp",
+        "eslint",
 				"html",
 				"jdtls",
 				"lua_ls",

@@ -3,33 +3,28 @@
 local function angular_switch_sibling(extension)
   local patterns = { "spec%.ts$", "ts$", "html$", "scss$", "css$" }
   local sibling_path = vim.fn.expand("%")
+  if sibling_path == nil then
+    return
+  end
   for _, pattern in ipairs(patterns) do
     sibling_path = string.gsub(sibling_path, pattern, extension)
   end
-  print(sibling_path)
-  vim.cmd("e " .. sibling_path)
+  if (vim.fn.filereadable(sibling_path) == 0) then
+    vim.ui.input(
+      { prompt = sibling_path .. " does not exist. Do you want to create the file (y/n)?" },
+      function(input)
+        print(input)
+        if (input == 'y') then
+          vim.cmd("e " .. sibling_path)
+        end
+      end
+    )
+  else
+    vim.cmd("e " .. sibling_path)
+  end
 end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = {
-    "*.spec.ts",
-    "*.ts",
-    "*.html",
-    "*.scss",
-    "*.css",
-  },
-  callback = function()
-    vim.keymap.set("n", "<leader>ah", function()
-      angular_switch_sibling("html")
-    end)
-    vim.keymap.set("n", "<leader>at", function()
-      angular_switch_sibling("ts")
-    end)
-    vim.keymap.set("n", "<leader>ac", function()
-      angular_switch_sibling("scss")
-    end)
-    vim.keymap.set("n", "<leader>as", function()
-      angular_switch_sibling("spec.ts")
-    end)
-  end,
-})
+vim.keymap.set("n", "<leader>ah", function() angular_switch_sibling("html") end)
+vim.keymap.set("n", "<leader>at", function() angular_switch_sibling("ts") end)
+vim.keymap.set("n", "<leader>ac", function() angular_switch_sibling("scss") end)
+vim.keymap.set("n", "<leader>as", function() angular_switch_sibling("spec.ts") end)
