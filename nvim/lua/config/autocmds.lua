@@ -7,11 +7,3 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
--- this is not workign
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "neo-tree" },
-  callback = function()
-    vim.opt.number = true
-  end
-})
-

@@ -12,9 +12,9 @@ return {
       popup_border_style = "rounded",
       enable_git_status = true,
       enable_diagnostics = true,
-      enable_normal_mode_for_inputs = false,                          -- Enable normal mode for input dialogs.
+      enable_normal_mode_for_inputs = false,                             -- Enable normal mode for input dialogs.
       open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
-      sort_case_insensitive = false,                                  -- used when sorting files and directories in the tree
+      sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
       default_component_configs = {
         container = {
           enable_character_fade = true,
@@ -125,11 +125,11 @@ return {
           },
         },
         follow_current_file = {
-          enabled = false,                  -- This will find and focus the file in the active buffer every time
+          enabled = false,                      -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.
-          leave_dirs_open = false,          -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          leave_dirs_open = false,              -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
-        group_empty_dirs = false,           -- when true, empty folders will be grouped together
+        group_empty_dirs = false,               -- when true, empty folders will be grouped together
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
         -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -171,11 +171,11 @@ return {
       },
       buffers = {
         follow_current_file = {
-          enabled = true,     -- This will find and focus the file in the active buffer every time
+          enabled = true,          -- This will find and focus the file in the active buffer every time
           --              -- the current file is changed while the tree is open.
           leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
-        group_empty_dirs = true, -- when true, empty folders will be grouped together
+        group_empty_dirs = true,   -- when true, empty folders will be grouped together
         show_unloaded = true,
         window = {
           mappings = {
@@ -233,6 +233,14 @@ return {
       vim.list_extend(opts.event_handlers, {
         { event = events.FILE_MOVED,   handler = on_move },
         { event = events.FILE_RENAMED, handler = on_move },
+        -- add relative numbers in NeoTree
+        {
+          event = events.NEO_TREE_BUFFER_ENTER,
+          handler = function()
+            vim.opt_local.number = true
+            vim.opt_local.relativenumber = true
+          end,
+        },
       })
       require("neo-tree").setup(opts)
     end,
