@@ -1,7 +1,6 @@
-
 # source machine specific addons
 for filename in ~/.config/custom_bash_scripts/*; do
-	source $filename
+  source $filename
 done
 
 ##############################################
@@ -10,8 +9,8 @@ done
 
 # Enable the subsequent settings only in interactive sessions
 case $- in
-  *i*) ;;
-    *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # oh my bash stuff
@@ -55,8 +54,7 @@ alias zshrc='"$EDITOR" ~/.zshrc'
 alias i3conf='"$EDITOR" ~/.config/i3/config'
 
 # ls/lsd
-if command -v lsd &> /dev/null
-then
+if command -v lsd &>/dev/null; then
   alias ls='lsd'
 fi
 alias l='ls -l'
@@ -77,14 +75,20 @@ alias gcm='git commit -m'
 ##############################################
 
 # colored man pages
-export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\e[01;37m'       # begin bold
-export LESS_TERMCAP_me=$'\e[0m'           # end all mode like so, us, mb, md, mr
-export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\e[45;93m'       # start standout mode
-export LESS_TERMCAP_ue=$'\e[0m'           # end underline
-export LESS_TERMCAP_us=$'\e[4;93m'        # start underlining
+export LESS_TERMCAP_mb=$'\e[01;31m' # begin blinking
+export LESS_TERMCAP_md=$'\e[01;37m' # begin bold
+export LESS_TERMCAP_me=$'\e[0m'     # end all mode like so, us, mb, md, mr
+export LESS_TERMCAP_se=$'\e[0m'     # end standout-mode
+export LESS_TERMCAP_so=$'\e[45;93m' # start standout mode
+export LESS_TERMCAP_ue=$'\e[0m'     # end underline
+export LESS_TERMCAP_us=$'\e[4;93m'  # start underlining
 
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source "/usr/share/nvm/init-nvm.sh"
 fi
+
+# set up zoxide
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init bash)"
+fi
+
