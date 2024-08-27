@@ -3,6 +3,8 @@ for filename in ~/.config/custom_bash_scripts/*; do
   source $filename
 done
 
+export PATH="$PATH:/home/$USER/projects/scripts"
+
 ##############################################
 ############# OH MY BASH SETTINGS ############
 ##############################################
@@ -91,4 +93,3 @@ fi
 if command -v zoxide &>/dev/null; then
   eval "$(zoxide init bash)"
 fi
-
