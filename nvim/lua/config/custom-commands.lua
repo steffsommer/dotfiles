@@ -44,15 +44,6 @@ end, {
 	nargs = 1,
 })
 
--- TODO: Remove this and replace with function split_string
-local function split_string(str, separator)
-	local lines = {}
-	for s in str:gmatch("[^" .. separator .. "]+") do
-		table.insert(lines, s)
-	end
-	return lines
-end
-
 -- Display LSP server capabilities
 vim.api.nvim_create_user_command("Lcaps", function()
 	local clients = vim.lsp.get_clients()
@@ -71,7 +62,7 @@ vim.api.nvim_create_user_command("Lcaps", function()
 	for _, client in ipairs(clients) do
 		local capabilities = client.server_capabilities
 		local capabilities_str = vim.inspect(capabilities)
-		local capabilities_tbl = split_string(capabilities_str, "\r\n")
+		local capabilities_tbl = require("util/lua_extensions").split_string(capabilities_str, "\r\n")
     table.insert(summary, separator)
     table.insert(summary, client.name)
     table.insert(summary, separator)
