@@ -14,7 +14,7 @@ vim.opt.ignorecase     = true
 vim.opt.cmdheight      = 0
 vim.o.splitright       = true
 vim.o.splitbelow       = true
-vim.o.signcolumn       = "yes" 
+vim.o.signcolumn       = "yes"
 
 vim.opt.helpheight     = 99999
 
@@ -32,3 +32,14 @@ vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", { noremap = true })
 
 vim.keymap.set("n", "<C-n>", vim.diagnostic.goto_next, {})
 vim.keymap.set("n", "<C-m>", vim.diagnostic.goto_prev, {})
+
+-- Fix clipboard in WSL
+local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+if in_wsl then
+  vim.g.clipboard = {
+    name = 'wsl clipboard',
+    copy = { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
+    paste = { ["+"] = { "nvim_paste" }, ["*"] = { "nvim_paste" } },
+    cache_enabled = true,
+  }
+end

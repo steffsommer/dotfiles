@@ -13,7 +13,8 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"onsails/lspkind.nvim",
-      "hrsh7th/cmp-nvim-lsp-signature-help"
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-path",
 		},
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}
@@ -56,7 +57,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "buffer" },
+					{ name = "path" },
 				}),
 			})
 		end,
