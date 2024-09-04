@@ -8,3 +8,11 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go" },
+  callback = function(opts)
+		local keymap_opts = { buffer = opts.buffer }
+    vim.keymap.set("n", "<leader>rp", ":term go run .<CR>", keymap_opts)
+  end
+})
