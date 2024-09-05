@@ -39,6 +39,10 @@ source "$OSH"/oh-my-bash.sh
 # enable vi mode
 set -o vi
 
+bind "\C-p":previous-history
+bind "\C-n":next-history
+bind "\C-l":clear-screen
+
 ##############################################
 ############ ENVIRONMENT SETTINGS ############
 ##############################################
@@ -71,6 +75,8 @@ alias gfa='git fetch --all'
 alias gl='git log'
 alias gp='git pull'
 alias gcm='git commit -m'
+
+alias pgcli='pgcli -U postgres -d'
 
 ##############################################
 #################### MISC ####################
