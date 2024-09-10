@@ -121,7 +121,7 @@ function M.on_supports_method(method, fn)
 end
 
 function M.rename_file()
-  local root_utils = require("util.root");
+  local root_utils = require("util.root")
   local buf = vim.api.nvim_get_current_buf()
   local old = assert(fs_utils.realpath(vim.api.nvim_buf_get_name(buf)))
   local root = assert(fs_utils.realpath(root_utils.get({ normalize = true })))
@@ -156,7 +156,7 @@ function M.on_rename(from, to, rename)
     files = { {
       oldUri = vim.uri_from_fname(from),
       newUri = vim.uri_from_fname(to),
-    } }
+    } },
   }
 
   local clients = M.get_clients()
@@ -197,20 +197,24 @@ function M.disable(server, cond)
   local util = require("lspconfig.util")
   local def = M.get_config(server)
   ---@diagnostic disable-next-line: undefined-field
-  def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
-    if cond(root_dir, config) then
-      config.enabled = false
+  def.document_config.on_new_config = util.add_hook_before(
+    def.document_config.on_new_config,
+    function(config, root_dir)
+      if cond(root_dir, config) then
+        config.enabled = false
+      end
     end
-  end)
+  )
 end
 
 ---Setup the default LSP keybindings for most common functionality. Sets up auto completion.
 ---Should be called first in response to LspAttach
 ---
----@param ev LspAttach event
+---@param ev table event
 function M.setup_default_keybindings(ev)
   -- Enable completion triggered by <c-x><c-o>
   vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+  local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
   -- Buffer local mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -232,6 +236,23 @@ function M.setup_default_keybindings(ev)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+  if client ~= nil and client.supports_method("source.organizeImports") then
+    vim.keymap.set("n", "<leader>co", function()
+      M.perform_code_action("source.organizeImports")
+    end, opts)
+  end
+end
+
+---Perform a code action on the current buffer
+---@param action any
+function M.perform_code_action(action)
+  vim.lsp.buf.code_action({
+    apply = true,
+    context = {
+      only = { action },
+      diagnostics = {},
+    },
+  })
 end
 
 return M
