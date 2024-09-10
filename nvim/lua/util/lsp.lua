@@ -241,6 +241,11 @@ function M.setup_default_keybindings(ev)
       M.perform_code_action("source.organizeImports")
     end, opts)
   end
+  if client ~= nil and client.supports_method("source.fixAll") then
+    vim.keymap.set("n", "<leader>fa", function()
+      M.perform_code_action("source.fixAll")
+    end, opts)
+  end
 end
 
 ---Perform a code action on the current buffer
