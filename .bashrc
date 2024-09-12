@@ -58,6 +58,7 @@ alias v="nvim"
 alias vim="nvim"
 alias zshrc='"$EDITOR" ~/.zshrc'
 alias i3conf='"$EDITOR" ~/.config/i3/config'
+alias ed="nvim ~/projects/dotfiles"
 
 # ls/lsd
 if command -v lsd &>/dev/null; then

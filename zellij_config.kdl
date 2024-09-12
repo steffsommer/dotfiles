@@ -1,17 +1,25 @@
 keybinds clear-defaults=true {
     normal {
-      bind "Alt 1" { GoToTab 1; }
-      bind "Alt 2" { GoToTab 2; }
-      bind "Alt 3" { GoToTab 3; }
-      bind "Alt 4" { GoToTab 4; }
-      bind "Alt 5" { GoToTab 5; }
-      bind "Alt 6" { GoToTab 6; }
-      bind "Alt 7" { GoToTab 7; }
-      bind "Alt 8" { GoToTab 8; }
-      bind "Alt 9" { GoToTab 9; }
+      // bind "Alt 1" { GoToTab 1; }
+      // bind "Alt 2" { GoToTab 2; }
+      // bind "Alt 3" { GoToTab 3; }
+      // bind "Alt 4" { GoToTab 4; }
+      // bind "Alt 5" { GoToTab 5; }
+      // bind "Alt 6" { GoToTab 6; }
+      // bind "Alt 7" { GoToTab 7; }
+      // bind "Alt 8" { GoToTab 8; }
+      // bind "Alt 9" { GoToTab 9; }
+      bind "Alt a" { GoToTab 1; }
+      bind "Alt s" { GoToTab 2; }
+      bind "Alt d" { GoToTab 3; }
+      bind "Alt f" { GoToTab 4; }
+      bind "Alt y" { GoToTab 5; }
+      bind "Alt x" { GoToTab 6; }
+      bind "Alt c" { GoToTab 7; }
+      bind "Alt v" { GoToTab 8; }
     }
     locked {
-        bind "Alt g" { SwitchToMode "Normal"; }
+        bind "Alt w" { SwitchToMode "Normal"; }
     }
     resize {
         bind "Alt n" { SwitchToMode "Normal"; }
@@ -151,11 +159,11 @@ keybinds clear-defaults=true {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
     shared_except "locked" {
-        bind "Alt g" { SwitchToMode "Locked"; }
+        bind "Alt w" { SwitchToMode "Locked"; }
         bind "Alt q" { Quit; }
         bind "Alt n" { NewPane; }
-        bind "Alt i" { MoveTab "Left"; }
-        bind "Alt o" { MoveTab "Right"; }
+        bind "Alt j" { MoveTab "Left"; }
+        bind "Alt k" { MoveTab "Right"; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
