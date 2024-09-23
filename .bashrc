@@ -78,9 +78,6 @@ alias gp='git pull'
 alias gcm='git commit -m'
 alias gdc='git diff --cached'
 
-# other
-alias pgcli='pgcli -U postgres -d'
-
 ##############################################
 #################### MISC ####################
 ##############################################

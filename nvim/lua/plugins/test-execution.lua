@@ -34,6 +34,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-go",
 			-- "rcasia/neotest-java",
 			-- "weilbith/neotest-gradle",
 		},
@@ -55,6 +56,7 @@ return {
 				log_level = vim.log.levels.DEBUG,
 				adapters = {
 					require("neotest-gradle"),
+          require("neotest-go"),
 					-- require("neotest-java")({
 					--   ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
 					--   junit_jar = nil,  -- default: .local/share/nvim/neotest-java/junit-platform-console-standalone-[version].jar
