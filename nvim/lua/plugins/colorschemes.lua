@@ -3,11 +3,8 @@ return {
 		"zootedb0t/citruszest.nvim",
 		priority = 1000,
 	},
-	{
-		"navarasu/onedark.nvim",
+  {
+    "projekt0n/github-nvim-theme",
 		priority = 1000,
-    opts = {
-      style = 'deep'
-    }
-	},
+  },
 }
