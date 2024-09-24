@@ -1,7 +1,11 @@
 # source machine specific addons
+
+
+shopt -s nullglob
 for filename in ~/.config/custom_bash_scripts/*; do
   source $filename
 done
+shopt -u nullglob
 
 export PATH="$PATH:/home/$USER/projects/scripts"
 
