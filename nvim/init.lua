@@ -27,4 +27,4 @@ require("lazy").setup({
 		border = "rounded",
 	},
 })
-vim.cmd("colorscheme citruszest")
+vim.cmd("colorscheme github_dark_default")
