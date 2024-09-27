@@ -7,9 +7,9 @@
             "command": 
             {
                 "action": "switchToTab",
-                "index": 0
+                "index": 4
             },
-            "keys": "ctrl+1"
+            "keys": "ctrl+5"
         },
         {
             "command": "unbound",
@@ -35,13 +35,13 @@
             "command": 
             {
                 "action": "switchToTab",
-                "index": 4
+                "index": 0
             },
-            "keys": "ctrl+5"
+            "keys": "ctrl+1"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
+            "command": "scrollUpPage",
+            "keys": "ctrl+shift+k"
         },
         {
             "command": 
@@ -53,8 +53,8 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "scrollUpPage",
-            "keys": "ctrl+shift+k"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": "scrollDownPage",
@@ -87,17 +87,17 @@
             "command": 
             {
                 "action": "switchToTab",
-                "index": 6
+                "index": 5
             },
-            "keys": "ctrl+7"
+            "keys": "ctrl+6"
         },
         {
             "command": 
             {
                 "action": "switchToTab",
-                "index": 5
+                "index": 6
             },
-            "keys": "ctrl+6"
+            "keys": "ctrl+7"
         },
         {
             "command": 
@@ -135,7 +135,7 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+    "defaultProfile": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
     "launchMode": "maximized",
     "newTabMenu": 
     [
@@ -296,13 +296,13 @@
             "cursorColor": "#B1BAC4",
             "cyan": "#39C5CF",
             "foreground": "#8B949E",
-            "green": "#3FB950",
+            "green": "#7CE38B",
             "name": "GitHub Dark",
             "purple": "#BC8CFF",
             "red": "#FF7B72",
             "selectionBackground": "#B1BAC4",
             "white": "#B1BAC4",
-            "yellow": "#D29922"
+            "yellow": "#FAA356"
         },
         {
             "background": "#282C34",
