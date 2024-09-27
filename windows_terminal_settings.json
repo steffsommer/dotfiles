@@ -7,9 +7,9 @@
             "command": 
             {
                 "action": "switchToTab",
-                "index": 0
+                "index": 4
             },
-            "keys": "ctrl+1"
+            "keys": "ctrl+5"
         },
         {
             "command": "unbound",
@@ -35,13 +35,13 @@
             "command": 
             {
                 "action": "switchToTab",
-                "index": 4
+                "index": 0
             },
-            "keys": "ctrl+5"
+            "keys": "ctrl+1"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
+            "command": "scrollUpPage",
+            "keys": "ctrl+shift+k"
         },
         {
             "command": 
@@ -53,8 +53,8 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "scrollUpPage",
-            "keys": "ctrl+shift+k"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": "scrollDownPage",
@@ -87,17 +87,17 @@
             "command": 
             {
                 "action": "switchToTab",
-                "index": 6
+                "index": 5
             },
-            "keys": "ctrl+7"
+            "keys": "ctrl+6"
         },
         {
             "command": 
             {
                 "action": "switchToTab",
-                "index": 5
+                "index": 6
             },
-            "keys": "ctrl+6"
+            "keys": "ctrl+7"
         },
         {
             "command": 
@@ -302,7 +302,7 @@
             "red": "#FF7B72",
             "selectionBackground": "#B1BAC4",
             "white": "#B1BAC4",
-            "yellow": "#D29922"
+            "yellow": "#FAA356"
         },
         {
             "background": "#282C34",
