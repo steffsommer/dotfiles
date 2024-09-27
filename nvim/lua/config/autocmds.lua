@@ -5,14 +5,20 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.api.nvim_set_keymap("n", "q", ":q<CR>", { noremap = true })
     vim.opt.number = true
     vim.opt.relativenumber = true
-  end
+  end,
 })
-
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "go" },
   callback = function(opts)
-		local keymap_opts = { buffer = opts.buffer }
+    local keymap_opts = { buffer = opts.buffer }
     vim.keymap.set("n", "<leader>rp", ":term go run .<CR>", keymap_opts)
-  end
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "qf" },
+  callback = function()
+    vim.opt.relativenumber = false
+  end,
 })

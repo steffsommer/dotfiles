@@ -135,7 +135,7 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+    "defaultProfile": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
     "launchMode": "maximized",
     "newTabMenu": 
     [
@@ -296,7 +296,7 @@
             "cursorColor": "#B1BAC4",
             "cyan": "#39C5CF",
             "foreground": "#8B949E",
-            "green": "#3FB950",
+            "green": "#7CE38B",
             "name": "GitHub Dark",
             "purple": "#BC8CFF",
             "red": "#FF7B72",

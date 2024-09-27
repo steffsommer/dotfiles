@@ -47,7 +47,8 @@ return {
         "jdtls",
         "lua_ls",
         "svelte",
-        "tsserver",
+        -- "tsserver", -- message said ts_ls is the new identifier, untested
+        "ts_ls",
         "gopls",
       },
       handlers = {
@@ -393,7 +394,11 @@ return {
       local util = require("lspconfig.util")
 
       local lspconfig = require("lspconfig")
-      lspconfig.tsserver.setup({
+      -- lspconfig.tsserver.setup({
+      --   capabilities = capabilities,
+      -- })
+      -- message said ts_ls was the new identifier, untested
+      lspconfig.ts_ls.setup({
         capabilities = capabilities,
       })
       lspconfig.svelte.setup({
