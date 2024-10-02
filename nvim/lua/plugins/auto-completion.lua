@@ -3,13 +3,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	{
-		"L3MON4D3/LuaSnip",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-		},
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"onsails/lspkind.nvim",
@@ -26,8 +19,6 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
-			require("luasnip.loaders.from_vscode").lazy_load()
-
 			cmp.setup({
 				formatting = {
 					format = lspkind.cmp_format({
@@ -36,11 +27,6 @@ return {
 						ellipsis_char = "...",
 						show_labelDetails = true,
 					}),
-				},
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
 				},
 				window = {
 					completion = cmp.config.window.bordered(),
@@ -55,7 +41,6 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },
 					{ name = "path" },
 				}),
