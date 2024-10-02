@@ -6,7 +6,6 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"onsails/lspkind.nvim",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-path",
 		},
 		opts = function(_, opts)
@@ -41,7 +40,6 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "nvim_lsp_signature_help" },
 					{ name = "path" },
 				}),
 			})
