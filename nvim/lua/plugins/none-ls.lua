@@ -11,9 +11,9 @@ return {
         null_ls.builtins.formatting.rubocop,
         null_ls.builtins.formatting.mdformat,
         null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.goimports
       },
     })
-
     vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format, {})
   end,
   dependencies = {
