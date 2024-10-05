@@ -27,4 +27,7 @@ require("lazy").setup({
 		border = "rounded",
 	},
 })
+
 vim.cmd("colorscheme github_dark_default")
+-- Simple (but dirty?) way to make all borders white
+vim.cmd("hi! link FloatBorder NormalNC")
