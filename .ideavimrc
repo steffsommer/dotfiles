@@ -59,7 +59,6 @@ map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 " quick close windows
 nnoremap <Leader>bd :action CloseContent<CR>
 nnoremap <Leader>q :action CloseContent<CR>
-nnoremap <Leader>qa :action CloseAllEditors<CR>
 nnoremap <C-w> :action SaveAll<CR>
 
 "+=-----------------------------=+ NAVIGATION +=-----------------------------=+"
@@ -69,7 +68,8 @@ sethandler <c-j> a:vim
 sethandler <c-k> a:vim
 
 " Ctrl+P / Search files by name
-nnoremap <leader>cp :action GotoFile<CR>
+"nnoremap <leader>cp :action GotoFile<CR>
+nnoremap <C-p> :action GotoFile<CR>
 " Find files by content
 nnoremap <leader>lg :action FindInPath<CR>
 " open list of recently opened files
@@ -91,7 +91,7 @@ nnoremap ]] :action MethodDown<CR>
 
 " reading
 nnoremap gi :action GotoImplementation<CR>
-nnoremap gD :action GotToDeclaration<CR>
+nnoremap gD :action GotoTypeDeclaration<CR>
 nnoremap gs :action GotoTest<CR>
 nnoremap gu :action ShowUsages<CR>
 
@@ -103,7 +103,7 @@ nnoremap Ü :action GotoPreviousError<CR>
 
 " writing
 nnoremap <leader>cr :action RenameElement<CR>
-nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>ff :action ReformatCode<CR>
 nnoremap <leader>co :action OptimizeImports<CR>
 nnoremap <leader>xq :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>rm :action Move<CR>
