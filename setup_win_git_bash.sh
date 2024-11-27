@@ -28,6 +28,7 @@ filesToSymlink=(
   ["nvim"]="/c/Users/$user/AppData/Local/nvim"
   [".ideavimrc"]="/c/Users/$user/.ideavimrc"
   [".tigrc"]="/c/Users/$user/.tigrc"
+  [".bashrc"]="/c/Users/$user/.bashrc"
 )
 
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

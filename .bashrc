@@ -1,6 +1,4 @@
-# source machine specific addons
-
-
+# machine specific configurations
 shopt -s nullglob
 for filename in ~/.config/custom_bash_scripts/*; do
   source $filename
@@ -20,21 +18,24 @@ case $- in
 esac
 
 # oh my bash stuff
-export OSH='/home/steff/.oh-my-bash'
-OSH_THEME="agnoster"
-completions=(
-  git
-  composer
-  ssh
-)
-aliases=(
-  general
-)
-plugins=(
-  git
-  bashmarks
-)
-source "$OSH"/oh-my-bash.sh
+osh_dir="/home/$USER/.oh-my-bash"
+if [ -d "$DIRECTORY" ]; then
+  export OSH=$osh_dir
+  OSH_THEME="agnoster"
+  completions=(
+    git
+    composer
+    ssh
+  )
+  aliases=(
+    general
+  )
+  plugins=(
+    git
+    bashmarks
+  )
+  source "$OSH"/oh-my-bash.sh
+fi
 
 ##############################################
 ############### SHELL SETTINGS ###############
@@ -74,13 +75,33 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 # git
-alias gs='git status'
-alias gaa='git add --all'
-alias gfa='git fetch --all'
-alias gl='git log'
-alias gp='git pull'
-alias gcm='git commit -m'
+alias gs='git status -u'
+alias gd='git diff'
 alias gdc='git diff --cached'
+alias gdb='git diff development --color-moved=dimmed-zebra --color-moved-ws=ignore-all-space --find-renames'
+alias gcm='git commit -m'
+alias gl="git log --graph --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
+alias gaa='git add "*"'
+alias gfa='git fetch --all'
+alias gp='git pull'
+alias pushnoci='git push -o integrations.skip_ci'
+
+# - Create a upstream branch for the currently checked out branch at the origin remote
+# - Push the local changes to the upstream branch
+# git push upstream
+function gpu {
+	branch_name=$(git rev-parse --abbrev-ref HEAD)
+	if [ $? -ne 0 ]; then
+		echo 'Failed to retrieve branch name. Potentially the command was executed outside a git repository'
+		exit -1
+	fi
+	git push --set-upstream origin "$branch_name"
+}
+
+
+# postgres stuff
+alias pgl='python -m pgcli -U postgres -d' # followed by db_name
+alias listdbs='python -m pgcli -U postgres -l'
 
 ##############################################
 #################### MISC ####################
