@@ -17,25 +17,22 @@ case $- in
 *) return ;;
 esac
 
-# oh my bash stuff
-osh_dir="/home/$USER/.oh-my-bash"
-if [ -d "$DIRECTORY" ]; then
-  export OSH=$osh_dir
-  OSH_THEME="agnoster"
-  completions=(
-    git
-    composer
-    ssh
-  )
-  aliases=(
-    general
-  )
-  plugins=(
-    git
-    bashmarks
-  )
-  source "$OSH"/oh-my-bash.sh
-fi
+export OSH="/home/$USER/.oh-my-bash"
+OSH_THEME="font"
+OMB_USE_SUDO=false
+completions=(
+  git
+  composer
+  ssh
+)
+aliases=(
+  general
+)
+plugins=(
+  git
+  bashmarks
+)
+source "$OSH"/oh-my-bash.sh
 
 ##############################################
 ############### SHELL SETTINGS ###############
@@ -127,3 +124,6 @@ fi
 if command -v zoxide &>/dev/null; then
   eval "$(zoxide init bash)"
 fi
+
+
+
