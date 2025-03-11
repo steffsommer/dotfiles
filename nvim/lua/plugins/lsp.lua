@@ -423,6 +423,9 @@ return {
       lspconfig.gopls.setup({
         capabilities = capabilities,
       })
+      lspconfig.protols.setup({
+        capabilities = capabilities,
+      })
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
