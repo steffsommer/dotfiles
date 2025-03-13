@@ -24,9 +24,9 @@ return {
   -- 		vim.cmd("NeotestJava setup")
   -- 	end,
   -- },
-  {
-    dir = "~/projects/neotest-gradle",
-  },
+  -- {
+  --   dir = "~/projects/neotest-gradle",
+  -- },
   {
     "nvim-neotest/neotest",
     dependencies = {
