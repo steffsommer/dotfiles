@@ -197,14 +197,11 @@ function M.disable(server, cond)
   local util = require("lspconfig.util")
   local def = M.get_config(server)
   ---@diagnostic disable-next-line: undefined-field
-  def.document_config.on_new_config = util.add_hook_before(
-    def.document_config.on_new_config,
-    function(config, root_dir)
-      if cond(root_dir, config) then
-        config.enabled = false
-      end
+  def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
+    if cond(root_dir, config) then
+      config.enabled = false
     end
-  )
+  end)
 end
 
 ---Setup the default LSP keybindings for most common functionality. Sets up auto completion.
@@ -226,25 +223,32 @@ function M.setup_default_keybindings(ev)
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "<leader>cR", require("util.lsp").rename_file, opts)
-
-  -- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-  -- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-  -- vim.keymap.set("n", "<space>wl", function()
-  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, opts)
   vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
-  if client ~= nil and client.supports_method("source.organizeImports") then
-    vim.keymap.set("n", "<leader>co", function()
-      M.perform_code_action("source.organizeImports")
-    end, opts)
+
+  -- check for special capabilities
+  M.bind_if_supported("<leader>ru", "source.removeUnused.ts", client, opts)
+  M.bind_if_supported("<leader>ami", "source.addMissingImports.ts", client, opts)
+  M.bind_if_supported("<leader>fa", "source.fixAll", client, opts)
+  M.bind_if_supported("<leader>co", "source.organizeImports", client, opts)
+end
+
+---Create a normal mode keybinding for the given LSP action
+---@param normalModeKeybind string, e.g. "<C-k>"
+---@param action string lsp action, e.g. "source.fixAll"
+---@param client any vim.lsp.client
+---@param opts any opts for vim.keymap.set
+function M.bind_if_supported(normalModeKeybind, action, client, opts)
+  if client == nil then
+    return
   end
-  if client ~= nil and client.supports_method("source.fixAll") then
-    vim.keymap.set("n", "<leader>fa", function()
-      M.perform_code_action("source.fixAll")
-    end, opts)
+  if client.supports_method("source.organizeImports") then
+    local handler = function()
+      M.perform_code_action(action)
+    end
+    vim.keymap.set("n", normalModeKeybind, handler, opts)
   end
 end
 
