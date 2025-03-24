@@ -422,6 +422,11 @@ return {
       })
       lspconfig.gopls.setup({
         capabilities = capabilities,
+        settings = {
+          gopls = {
+            buildFlags = { "-tags=integration unit" },
+          },
+        },
       })
       lspconfig.protols.setup({
         capabilities = capabilities,
