@@ -48,6 +48,7 @@ return {
         "lua_ls",
         "svelte",
         "ts_ls",
+        "azure_pipelines_ls",
         "gopls",
       },
       handlers = {
@@ -419,11 +420,14 @@ return {
         capabilities = capabilities,
         settings = {
           gopls = {
-            buildFlags = { "-tags=integration unit" },
+            buildFlags = { "-tags=slowtest unittest" },
           },
         },
       })
       lspconfig.protols.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.azure_pipelines_ls.setup({
         capabilities = capabilities,
       })
 

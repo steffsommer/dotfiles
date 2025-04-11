@@ -125,5 +125,11 @@ if command -v zoxide &>/dev/null; then
   eval "$(zoxide init bash)"
 fi
 
-
+# Forcefully kill a process based a port it occupies
+# Usage: portpkill <port>
+function portpkill() {
+  ss_line=$(ss -lptn "sport = $1")
+  pid=$(echo $ss_line | awk -F'pid=' '{print $2}' | awk -F',' '{print $1}')
+  kill -9 $pid
+}
 
