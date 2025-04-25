@@ -416,6 +416,10 @@ return {
       lspconfig.eslint.setup({
         capabilities = capabilities,
       })
+      lspconfig.kotlin_language_server.setup({
+        capabilities = capabilities,
+        settings = { kotlin = { compiler = { jvm = { target = "21" } } } },
+      })
       lspconfig.gopls.setup({
         capabilities = capabilities,
         settings = {

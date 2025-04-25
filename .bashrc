@@ -1,11 +1,12 @@
-# machine specific configurations
+##############################################
+############## MINI PLUGIN SYSTEM ############
+##############################################
+
 shopt -s nullglob
 for filename in ~/.config/custom_bash_scripts/*; do
   source $filename
 done
 shopt -u nullglob
-
-export PATH="$PATH:/home/$USER/projects/scripts"
 
 ##############################################
 ############# OH MY BASH SETTINGS ############
@@ -62,10 +63,6 @@ alias zshrc='"$EDITOR" ~/.zshrc'
 alias i3conf='"$EDITOR" ~/.config/i3/config'
 alias ed="nvim ~/projects/dotfiles"
 
-# ls/lsd
-if command -v lsd &>/dev/null; then
-  alias ls='lsd'
-fi
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -83,9 +80,41 @@ alias gfa='git fetch --all'
 alias gp='git pull'
 alias pushnoci='git push -o integrations.skip_ci'
 
+# postgres stuff
+alias pgl='python -m pgcli -U postgres -d' # followed by db_name
+alias listdbs='python -m pgcli -U postgres -l'
+
+##############################################
+########## PROGRESSIVE ENHANCEMENT ###########
+##############################################
+
+if command -v lsd &>/dev/null; then
+  alias ls='lsd'
+fi
+
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source "/usr/share/nvm/init-nvm.sh"
+fi
+
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+  source /usr/share/fzf/key-bindings.bash
+fi
+
+##############################################
+############## CUSTOM FUNCTIONS ##############
+##############################################
+
+# Forcefully kill a process based a port it occupies
+# Usage: portpkill <port>
+function portpkill() {
+  ss_line=$(ss -lptn "sport = $1")
+  pid=$(echo $ss_line | awk -F'pid=' '{print $2}' | awk -F',' '{print $1}')
+  kill -9 $pid
+}
+
 # - Create a upstream branch for the currently checked out branch at the origin remote
 # - Push the local changes to the upstream branch
-# git push upstream
+# Git Push Upstream
 function gpu {
 	branch_name=$(git rev-parse --abbrev-ref HEAD)
 	if [ $? -ne 0 ]; then
@@ -94,11 +123,6 @@ function gpu {
 	fi
 	git push --set-upstream origin "$branch_name"
 }
-
-
-# postgres stuff
-alias pgl='python -m pgcli -U postgres -d' # followed by db_name
-alias listdbs='python -m pgcli -U postgres -l'
 
 ##############################################
 #################### MISC ####################
@@ -112,24 +136,6 @@ export LESS_TERMCAP_us=$'\e[01;37m'    # begin underline
 export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
 export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
-# required for the colors to work in some terminals, e.g. Windows Terminal
 export GROFF_NO_SGR=1
 
-
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
-  source "/usr/share/nvm/init-nvm.sh"
-fi
-
-# set up zoxide
-if command -v zoxide &>/dev/null; then
-  eval "$(zoxide init bash)"
-fi
-
-# Forcefully kill a process based a port it occupies
-# Usage: portpkill <port>
-function portpkill() {
-  ss_line=$(ss -lptn "sport = $1")
-  pid=$(echo $ss_line | awk -F'pid=' '{print $2}' | awk -F',' '{print $1}')
-  kill -9 $pid
-}
-
+export PATH="$PATH:/home/$USER/projects/scripts"
