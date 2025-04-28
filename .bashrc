@@ -31,7 +31,6 @@ aliases=(
 )
 plugins=(
   git
-  bashmarks
 )
 source "$OSH"/oh-my-bash.sh
 
