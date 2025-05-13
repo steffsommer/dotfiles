@@ -18,6 +18,7 @@ vim.o.splitbelow = true
 vim.o.signcolumn = "yes"
 
 vim.opt.helpheight = 99999
+vim.o.wildignore = "node_modules/*"
 
 vim.opt.wrap = false
 vim.o.clipboard = "unnamedplus"
