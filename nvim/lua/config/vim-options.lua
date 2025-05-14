@@ -16,6 +16,7 @@ vim.opt.cmdheight = 0
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.signcolumn = "yes"
+vim.o.termguicolors = true
 
 vim.opt.helpheight = 99999
 vim.o.wildignore = "node_modules/*"

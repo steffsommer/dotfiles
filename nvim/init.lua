@@ -28,6 +28,6 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd("colorscheme github_dark_default")
+vim.cmd("colorscheme jellybeans-nvim")
 -- Simple (but dirty?) way to make all borders white
 vim.cmd("hi! link FloatBorder NormalNC")
