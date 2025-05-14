@@ -22,21 +22,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.relativenumber = false
   end,
 })
-
-local function toggle_test_file()
-  local file_name = vim.fn.expand("%")
-  print(file_name)
-  local edit_target = ""
-  if vim.endswith(file_name, "_test.go") then
-    edit_target = string.gsub(file_name, "_test.go$", ".go")
-  elseif vim.endswith(file_name, ".go") then
-    edit_target = string.gsub(file_name, ".go$", "_test.go")
-  end
-  if vim.fn.filereadable(edit_target) == 1 then
-    vim.cmd("e " .. edit_target)
-  else
-    print("File " .. edit_target .. " does not exist")
-  end
-end
-
-vim.keymap.set("n", "<leader>gs", toggle_test_file)
