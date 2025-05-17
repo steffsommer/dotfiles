@@ -11,6 +11,8 @@ that automatically install the configurations with a a single command on Windows
 | `Bash`             | The standard Unix shell and command language interpreter                                                        |
 | `tig`              | A TUI for Git that acts as a repository browser                                                                 |
 | `zellij`           | An extensible terminal multiplexer featuring session management, panes, tabs, and layouts                       |
+| `tmux`             | Another terminal multiplexer I was using before `zellij`                                                        |
+| `i3`               | A tiling window manager/Desktop environment for Linux that can be fully controlled using keyboard shortcuts     |
 | `Windows Terminal` | Microsoft's terminal application                                                                                |
 | `vscode-neovim`    | VS Code extension that integrates Neovim's editing capabilities into Visual Studio Code                         |
 | `IdeaVim`          | Plugin for JetBrains IDEs that emulates Vim keybindings and functionality within their development environments |
@@ -30,5 +32,5 @@ Run `setup.sh` as a regular user.
 
 ### Windows
 
-Run `setup_win_git_bash.sh` as administrator and enter your user name in the prompt. Windows
-requires admin privileges to setup symlinks.
+Open Git Bash as administrator, run `setup_win_git_bash.sh` and enter your user name in the prompt. Windows
+requires admin privileges to create symlinks.
