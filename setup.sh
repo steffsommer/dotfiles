@@ -5,10 +5,11 @@ if [[ $EUID -eq 0 ]]; then
   exit 1
 fi
 
+dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 declare -A filesToSymlink
 filesToSymlink=(
   ["nvim"]="/home/$USER/.config/nvim"
-  # [".zshrc"]="/home/$USER/.zshrc"
   [".bashrc"]="/home/$USER/.bashrc"
   [".gitconfig"]="/home/$USER/.gitconfig"
   ["tmux.conf"]="/home/$USER/.config/tmux/tmux.conf"
@@ -17,9 +18,6 @@ filesToSymlink=(
   ["zellij_config.kdl"]="/home/$USER/.config/zellij/config.kdl"
 )
 
-dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-# symlink all configured files
 echo "[INFO] Symlinking dotfiles ..."
 for file in "${!filesToSymlink[@]}"
 do

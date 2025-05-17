@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Caveats: Currently only works for directories, because mklink /D is used
-
 
 log_info() {
   echo "[INFO] $1"
@@ -10,6 +8,14 @@ error_exit() {
   echo "[ERROR] $1"
   exit 1
 }
+
+declare -A filesToSymlink
+filesToSymlink=(
+  ["nvim"]="/c/Users/$user/AppData/Local/nvim"
+  [".ideavimrc"]="/c/Users/$user/.ideavimrc"
+  [".tigrc"]="/c/Users/$user/.tigrc"
+  [".bashrc"]="/c/Users/$user/.bashrc"
+)
 
 if ! [[ $(sfc 2>&1 | tr -d '\0') =~ SCANNOW ]]; then
   error_exit  "This script must be run from a Git bash that was executed as Administrator"
@@ -23,17 +29,8 @@ then
   error_exit "Home directory $user_home_dir for user $user does not exist"
 fi
 
-declare -A filesToSymlink
-filesToSymlink=(
-  ["nvim"]="/c/Users/$user/AppData/Local/nvim"
-  [".ideavimrc"]="/c/Users/$user/.ideavimrc"
-  [".tigrc"]="/c/Users/$user/.tigrc"
-  [".bashrc"]="/c/Users/$user/.bashrc"
-)
-
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# symlink all configured files
 log_info "Symlinking dotfiles ..."
 
 for file in "${!filesToSymlink[@]}"
@@ -58,8 +55,6 @@ do
   else
     error_exit "$dotfile_linux_path does not exist and therefore cannot be linked. Exiting..."
   fi
-
-
 done
 
 log_info 'Done'
