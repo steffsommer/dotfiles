@@ -3,29 +3,28 @@
 #  /_  / / ___/ __ \/ ___/ ___/
 #   / /_(__  ) / / / /  / /__
 #  /___/____/_/ /_/_/   \___/
-# author: steff
+#
+# author: steffsommer
+
 
 ##############################################
-############ ENVIRONMENT SETTINGS ############
+############## MINI PLUGIN SYSTEM ############
 ##############################################
 
-export EDITOR="nvim"
+setopt NULL_GLOB
+for filename in ~/.config/custom_bash_scripts/*; do
+  source $filename
+done
 
 ##############################################
-############# OH MY ZSH SETTINGS #############
+############## OH MY ZSH SETTINGS ############
 ##############################################
 
-# oh-my-zsh installation directory
-export ZSH="/home/$USER/.oh-my-zsh"
-
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-
-# Automatically check for updates every 14 days
 export UPDATE_ZSH_DAYS=14
 
-# Load Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
   git
 )
@@ -33,37 +32,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ##############################################
-################## ALIASES ###################
+################ ZSH SETTINGS ################
 ##############################################
 
-# quick configs
-alias v="nvim"
-alias vim="nvim"
-alias zshrc='"$EDITOR" ~/.zshrc'
-alias i3conf='"$EDITOR" ~/.config/i3/config'
-
-# ls/lsd
-if command -v lsd &> /dev/null
-then
-  alias ls='lsd'
-fi
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-
-# git
-alias gs='git status'
-alias gaa='git add --all'
-alias gfa='git fetch --all'
-alias gl='git log'
-alias gp='git pull'
-alias gcm='git commit -m'
-alias gdc='git diff --cached'
-
-##############################################
-############### SHELL SETTINGS ###############
-##############################################
+# Immediately show suggestions without asking
+LISTPROMPT=""
 
 # enable vi mode
 bindkey -v
@@ -74,17 +47,98 @@ bindkey "^?" backward-delete-char
 # get rid of delay time when swiching between modes
 export KEYTIMEOUT=1
 
+# Navigate history using <C-P> and <C-N>
+bindkey '^P' up-line-or-history
+bindkey '^N' down-line-or-history
+
+##############################################
+############ ENVIRONMENT SETTINGS ############
+##############################################
+
+export EDITOR="nvim"
+
+##############################################
+################## ALIASES ###################
+##############################################
+
+# quick configs
+alias v="nvim"
+alias vim="nvim"
+alias i3conf='"$EDITOR" ~/.config/i3/config'
+
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+# git
+alias gs='git status -u'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdb='git diff --color-moved=dimmed-zebra --color-moved-ws=ignore-all-space --find-renames'
+alias gcm='git commit -m'
+alias gl="git log --graph --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
+alias gaa='git add "*"'
+alias gfa='git fetch --all'
+alias gp='git pull'
+
+# postgres stuff
+alias pgl='python -m pgcli -U postgres -d' # followed by db_name
+alias listdbs='python -m pgcli -U postgres -l'
+
+##############################################
+########## PROGRESSIVE ENHANCEMENT ###########
+##############################################
+
+if command -v lsd &>/dev/null; then
+  alias ls='lsd'
+fi
+
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source "/usr/share/nvm/init-nvm.sh"
+fi
+
+if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh
+fi
+
 ##############################################
 ############## CUSTOM FUNCTIONS ##############
 ##############################################
 
-source /usr/share/nvm/init-nvm.sh
+# Forcefully kill a process based a port it occupies
+# Usage: portpkill <port>
+function portpkill() {
+  ss_line=$(ss -lptn "sport = $1")
+  pid=$(echo $ss_line | awk -F'pid=' '{print $2}' | awk -F',' '{print $1}')
+  kill -9 $pid
+}
 
-# colored man pages
-export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\e[01;37m'       # begin bold
-export LESS_TERMCAP_me=$'\e[0m'           # end all mode like so, us, mb, md, mr
-export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\e[45;93m'       # start standout mode
-export LESS_TERMCAP_ue=$'\e[0m'           # end underline
-export LESS_TERMCAP_us=$'\e[4;93m'        # start underlining
+# Git Push Upstream
+# - Create a upstream branch for the currently checked out branch at the origin remote
+# - Push the local changes to the upstream branch
+function gpu {
+	branch_name=$(git rev-parse --abbrev-ref HEAD)
+	if [ $? -ne 0 ]; then
+		echo 'Failed to retrieve branch name. Potentially the command was executed outside a git repository'
+		exit -1
+	fi
+	git push --set-upstream origin "$branch_name"
+}
+
+##############################################
+#################### MISC ####################
+##############################################
+
+# Colored man pages
+export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\e[1;33m'     # begin blink
+export LESS_TERMCAP_so=$'\e[01;44;37m' # begin reverse video
+export LESS_TERMCAP_us=$'\e[01;37m'    # begin underline
+export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
+export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
+export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
+export GROFF_NO_SGR=1
+
+export PATH="$PATH:/home/$USER/projects/scripts"
+

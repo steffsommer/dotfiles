@@ -11,6 +11,7 @@ declare -A filesToSymlink
 filesToSymlink=(
   ["nvim"]="/home/$USER/.config/nvim"
   [".bashrc"]="/home/$USER/.bashrc"
+  [".zshrc"]="/home/$USER/.zshrc"
   [".gitconfig"]="/home/$USER/.gitconfig"
   ["tmux.conf"]="/home/$USER/.config/tmux/tmux.conf"
   [".tigrc"]="/home/$USER/.tigrc"

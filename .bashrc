@@ -111,9 +111,9 @@ function portpkill() {
   kill -9 $pid
 }
 
+# Git Push Upstream
 # - Create a upstream branch for the currently checked out branch at the origin remote
 # - Push the local changes to the upstream branch
-# Git Push Upstream
 function gpu {
 	branch_name=$(git rev-parse --abbrev-ref HEAD)
 	if [ $? -ne 0 ]; then
