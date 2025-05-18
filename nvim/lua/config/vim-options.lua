@@ -26,6 +26,10 @@ vim.o.clipboard = "unnamedplus"
 vim.opt.swapfile = false
 vim.o.shellcmdflag = "-ic"
 
+vim.o.foldmethod = "indent"
+vim.o.foldnestmax = 1
+vim.o.foldenable = false
+
 -- Fix clipboard in WSL
 local in_wsl = os.getenv("WSL_DISTRO_NAME") ~= nil
 if in_wsl then

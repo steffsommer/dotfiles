@@ -1,4 +1,3 @@
-
 vim.api.nvim_set_keymap("n", "<C-g>", ":wa<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-g>", "<Esc>:wa<CR>", { noremap = true })
 
@@ -18,3 +17,6 @@ vim.api.nvim_set_keymap("n", "<leader>cp", ":cprev<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>cq", ":cclose<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>cc", ":cc<CR>", { noremap = true })
 
+local step = 5
+vim.api.nvim_set_keymap("n", "<C-E>", step .. "<C-E>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-Y>", step .. "<C-Y>", { noremap = true })

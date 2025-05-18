@@ -20,6 +20,7 @@ return {
       vim.keymap.set("n", "<leader>lg", builtin.live_grep, {})
       vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
       vim.keymap.set("n", "<leader>tr", builtin.resume, {})
+      vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
 
       telescope.load_extension("ui-select")
     end,

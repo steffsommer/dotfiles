@@ -62,6 +62,11 @@ return {
           --   junit_jar = nil,  -- default: .local/share/nvim/neotest-java/junit-platform-console-standalone-[version].jar
           -- }),
         },
+        floating = {
+          border = "rounded",
+          max_height = 0.9,
+          max_width = 0.9,
+        },
       })
     end,
   },
