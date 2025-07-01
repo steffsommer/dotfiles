@@ -47,3 +47,5 @@
 
 [init]
 	defaultBranch = main
+[safe]
+	directory = %(prefix)///wsl.localhost/ArchV2/opt/flutter

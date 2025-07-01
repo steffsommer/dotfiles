@@ -73,6 +73,7 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdb='git diff development --color-moved=dimmed-zebra --color-moved-ws=ignore-all-space --find-renames'
 alias gcm='git commit -m'
+alias gcma='git commit --amend'
 alias gl="git log --graph --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
 alias gaa='git add "*"'
 alias gfa='git fetch --all'
@@ -138,3 +139,5 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1
 
 export PATH="$PATH:/home/$USER/projects/scripts"
+
+function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }

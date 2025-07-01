@@ -19,4 +19,9 @@ return {
       "rktjmp/lush.nvim",
     },
   },
+  {
+    "Shatur/neovim-ayu",
+    lazy = false,
+    priority = 1000,
+  },
 }
