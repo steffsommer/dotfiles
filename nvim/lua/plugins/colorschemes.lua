@@ -1,14 +1,6 @@
 return {
   {
-    "zootedb0t/citruszest.nvim",
-    priority = 1000,
-  },
-  {
     "projekt0n/github-nvim-theme",
-    priority = 1000,
-  },
-  {
-    "mikesmithgh/gruvsquirrel.nvim",
     priority = 1000,
   },
   {
@@ -20,8 +12,16 @@ return {
     },
   },
   {
-    "Shatur/neovim-ayu",
-    lazy = false,
-    priority = 1000,
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      require("rose-pine").setup({
+        palette = {
+          main = { -- main or moon
+            base = "#111111",
+          },
+        },
+      })
+    end,
   },
 }
