@@ -38,40 +38,39 @@ vim.keymap.set("n", "<leader>as", function()
   angular_switch_sibling("spec.ts")
 end)
 
--- Display help in a vsplit
-vim.api.nvim_create_user_command("H", function(args)
-  vim.cmd("vert help " .. args.args)
-end, {
-  nargs = 1,
-})
-
 ------------------------------------------------------------------
 ---------------------- Go File Switcher --------------------------
 ------------------------------------------------------------------
 
 local function toggle_test_file()
-  local file_name = vim.fn.expand("%")
-  print(file_name)
-  local edit_target = ""
-  if vim.endswith(file_name, "_test.go") then
-    edit_target = string.gsub(file_name, "_test.go$", ".go")
-  elseif vim.endswith(file_name, ".go") then
-    edit_target = string.gsub(file_name, ".go$", "_test.go")
+  local current_file = vim.fn.expand("%")
+  local target_file = ""
+  if vim.endswith(current_file, "_test.go") then
+    target_file = string.gsub(current_file, "_test.go$", ".go")
+  elseif vim.endswith(current_file, ".go") then
+    target_file = string.gsub(current_file, ".go$", "_test.go")
   else
-    print("Unable to determine edit target")
+    print("Binding only works for .go files")
+    return
   end
-  if vim.fn.filereadable(edit_target) == 1 then
-    vim.cmd("e " .. edit_target)
+  if vim.fn.filereadable(target_file) == 1 then
+    vim.cmd("e " .. target_file)
   else
-    print("File " .. edit_target .. " does not exist")
+    print("File " .. target_file .. " does not exist")
+    vim.ui.input({
+      prompt = target_file .. " does not exist. Do you want to create the file (y/n)?",
+    }, function(input)
+      if input == "y" then
+        vim.cmd("e " .. target_file)
+      end
+    end)
   end
 end
 
 vim.keymap.set("n", "<leader>gs", toggle_test_file)
 
-
 ------------------------------------------------------------------
--------------------------- LSP stuff -----------------------------
+----------------------------- misc -------------------------------
 ------------------------------------------------------------------
 
 -- Display LSP server capabilities
@@ -98,7 +97,12 @@ vim.api.nvim_create_user_command("Lcaps", function()
     table.insert(summary, separator)
     vim.list_extend(summary, capabilities_tbl)
   end
-  -- local capabilities_tbl = split_newlines(capabilities_str)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, summary)
 end, {})
 
+-- Display help in a vsplit
+vim.api.nvim_create_user_command("H", function(args)
+  vim.cmd("vert help " .. args.args)
+end, {
+  nargs = 1,
+})
