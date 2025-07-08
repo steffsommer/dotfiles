@@ -22,3 +22,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.relativenumber = false
   end,
 })
+
+-- close nvim-dap widget window with 'q'
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "dap-float",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>close!<CR>", { noremap = true, silent = true })
+  end,
+})
