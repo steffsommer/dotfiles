@@ -10,6 +10,27 @@ return {
     },
     keys = {
       {
+        "<Left>",
+        function()
+          require("dap").step_out()
+        end,
+        desc = "Step Out",
+      },
+      {
+        "<Down>",
+        function()
+          require("dap").step_over()
+        end,
+        desc = "Step Over",
+      },
+      {
+        "<Right>",
+        function()
+          require("dap").step_into()
+        end,
+        desc = "Step Into",
+      },
+      {
         "<leader>db",
         function()
           require("dap").toggle_breakpoint()
@@ -31,11 +52,18 @@ return {
         desc = "Run to Cursor",
       },
       {
-        "<leader>di",
+        "<leader>dt",
         function()
-          require("dap").step_into()
+          require("dap").terminate()
         end,
-        desc = "Step Into",
+        desc = "Terminate",
+      },
+      {
+        "<leader>dw",
+        function()
+          require("dap.ui.widgets").hover()
+        end,
+        desc = "Widgets",
       },
       {
         "<leader>dj",
@@ -50,41 +78,6 @@ return {
           require("dap").up()
         end,
         desc = "Up",
-      },
-      {
-        "<leader>do",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "Step Out",
-      },
-      {
-        "<leader>dO",
-        function()
-          require("dap").step_over()
-        end,
-        desc = "Step Over",
-      },
-      {
-        "<leader>dr",
-        function()
-          require("dap").repl.toggle()
-        end,
-        desc = "Toggle REPL",
-      },
-      {
-        "<leader>dt",
-        function()
-          require("dap").terminate()
-        end,
-        desc = "Terminate",
-      },
-      {
-        "<leader>dw",
-        function()
-          require("dap.ui.widgets").hover()
-        end,
-        desc = "Widgets",
       },
     },
   },
