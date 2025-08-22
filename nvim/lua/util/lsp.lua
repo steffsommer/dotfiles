@@ -217,7 +217,18 @@ function M.setup_default_keybindings(ev)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local opts = { buffer = ev.buf }
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  -- definition always opens quickfix list, there are always 2 result from the LSP
+  -- likely a bug in NeoVim or some plugin. Adding this listhandler for now to avoid
+  -- opening a list altogether
+  vim.keymap.set("n", "gd", function()
+    vim.lsp.buf.definition({
+      on_list = function(list)
+        local item = list.items[1]
+        vim.cmd.edit(item.filename)
+        vim.fn.setcursorcharpos(item.lnum, item.col)
+      end,
+    })
+  end, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
