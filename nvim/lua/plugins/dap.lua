@@ -8,6 +8,13 @@ return {
         opts = {},
       },
     },
+    config = function()
+      vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapBreakpointCondition", { text = "🟠", texthl = "", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapLogPoint", { text = "📝", texthl = "", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapStopped", { text = "➡️", texthl = "", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapBreakpointRejected", { text = "❌", texthl = "", linehl = "", numhl = "" })
+    end,
     keys = {
       {
         "<Left>",
@@ -108,7 +115,18 @@ return {
   {
     "leoluz/nvim-dap-go",
     config = function()
-      require("dap-go").setup({})
+      require("dap-go").setup({
+        -- the build flags that are passed to delve.
+        -- defaults to empty string, but can be used to provide flags
+        -- such as "-tags=unit" to make sure the test suite is
+        -- compiled during debugging, for example.
+        -- passing build flags using args is ineffective, as those are
+        -- ignored by delve in dap mode.
+        -- avaliable ui interactive function to prompt for arguments get_arguments
+        build_flags = {
+          "-tags=unittest,slowtest",
+        },
+      })
     end,
   },
 }
