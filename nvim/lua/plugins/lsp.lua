@@ -39,6 +39,7 @@ return {
     lazy = false,
     opts = {
       auto_install = true,
+      automatic_enable = false, -- very important to avoid duplicate LSP servers since nvim 0.11
       ensure_installed = {
         "angularls",
         "bashls",
