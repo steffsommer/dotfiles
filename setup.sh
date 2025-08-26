@@ -15,7 +15,6 @@ filesToSymlink=(
   [".gitconfig"]="/home/$USER/.gitconfig"
   ["tmux.conf"]="/home/$USER/.config/tmux/tmux.conf"
   [".tigrc"]="/home/$USER/.tigrc"
-  [".tigrc"]="/home/$USER/.tigrc"
   ["zellij_config.kdl"]="/home/$USER/.config/zellij/config.kdl"
 )
 
