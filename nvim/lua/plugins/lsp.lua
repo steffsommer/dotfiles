@@ -1,20 +1,3 @@
--- This is the same as in lspconfig.server_configurations.jdtls, but avoids
--- needing to require that when this module loads.
-local java_filetypes = { "java" }
-
--- Utility function to extend or override a config table, similar to the way
--- that Plugin.opts works.
----@param config table
----@param custom function | table | nil
-local function extend_or_override(config, custom, ...)
-  if type(custom) == "function" then
-    config = custom(config, ...) or config
-  elseif custom then
-    config = vim.tbl_deep_extend("force", config, custom) --[[@as table]]
-  end
-  return config
-end
-
 return {
   {
     "williamboman/mason.nvim",
@@ -49,8 +32,8 @@ return {
         "lua_ls",
         "svelte",
         "ts_ls",
-        "azure_pipelines_ls",
         "gopls",
+        "protols"
       },
       handlers = {
         ["angularls"] = function()
@@ -80,10 +63,9 @@ return {
     },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       local util = require("lspconfig.util")
-
       local lspconfig = require("lspconfig")
+
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
       })
@@ -109,10 +91,6 @@ return {
       lspconfig.terraformls.setup({
         capabilities = capabilities,
       })
-      lspconfig.kotlin_language_server.setup({
-        capabilities = capabilities,
-        settings = { kotlin = { compiler = { jvm = { target = "21" } } } },
-      })
       lspconfig.gopls.setup({
         capabilities = capabilities,
         settings = {
@@ -122,9 +100,6 @@ return {
         },
       })
       lspconfig.protols.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.azure_pipelines_ls.setup({
         capabilities = capabilities,
       })
 
