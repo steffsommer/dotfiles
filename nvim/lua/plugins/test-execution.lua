@@ -6,7 +6,7 @@ return {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "fredrikaverpil/neotest-golang"
+      "fredrikaverpil/neotest-golang",
       -- "rcasia/neotest-java",
       -- "weilbith/neotest-gradle",
     },
@@ -15,17 +15,22 @@ return {
       neotest.setup({
         log_level = vim.log.levels.DEBUG,
         adapters = {
-          -- require("neotest-gradle"),
-          require("neotest-golang"),
-          -- require("neotest-java")({
-          --   ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
-          --   junit_jar = nil,  -- default: .local/share/nvim/neotest-java/junit-platform-console-standalone-[version].jar
-          -- }),
+          require("neotest-golang")({
+            go_test_args = { "-v", "-race", "-tags=slowtest unittest" },
+            dap_go_opts = {
+              delve = {
+                build_flags = { "-tags=slowtest unittest" },
+              },
+            },
+          }),
         },
         floating = {
           border = "rounded",
           max_height = 0.9,
           max_width = 0.9,
+        },
+        quickfix = {
+          enabled = false,
         },
       })
       vim.keymap.set("n", "<leader>nt", function()
@@ -36,6 +41,9 @@ return {
       end)
       vim.keymap.set("n", "<leader>tt", function()
         neotest.run.run()
+      end)
+      vim.keymap.set("n", "<leader>dd", function()
+        neotest.run.run({ strategy = "dap" })
       end)
       vim.keymap.set("n", "<leader>to", function()
         neotest.output.open()
