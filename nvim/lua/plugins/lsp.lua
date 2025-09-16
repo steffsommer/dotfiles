@@ -33,7 +33,7 @@ return {
         "svelte",
         "ts_ls",
         "gopls",
-        "protols"
+        "sqlls",
       },
       handlers = {
         ["angularls"] = function()
@@ -100,6 +100,9 @@ return {
         },
       })
       lspconfig.protols.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.sqlls.setup({
         capabilities = capabilities,
       })
 

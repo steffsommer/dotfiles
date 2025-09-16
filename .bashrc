@@ -141,3 +141,4 @@ export GROFF_NO_SGR=1
 export PATH="$PATH:/home/$USER/projects/scripts"
 
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
