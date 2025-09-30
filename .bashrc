@@ -100,6 +100,11 @@ if [ -f /usr/share/fzf/key-bindings.bash ]; then
   source /usr/share/fzf/key-bindings.bash
 fi
 
+# Load Angular CLI autocompletion.
+if command -v ng &>/dev/null; then
+  source <(ng completion script)
+fi
+
 ##############################################
 ############## CUSTOM FUNCTIONS ##############
 ##############################################
@@ -142,3 +147,4 @@ export PATH="$PATH:/home/$USER/projects/scripts"
 
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
+export PATH=$PATH:/home/$USER/go/bin

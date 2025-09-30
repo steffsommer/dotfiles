@@ -6,15 +6,9 @@ return {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
-       null_ls.builtins.formatting.mdformat,
+        null_ls.builtins.formatting.mdformat,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.goimports,
-        null_ls.builtins.diagnostics.sqruff.with({
-          extra_args = { "--dialect", "postgres" }, -- change to your dialect
-        }),
-        null_ls.builtins.formatting.sqruff.with({
-          extra_args = { "--dialect", "postgres" }, -- change to your dialect
-        }),
         null_ls.builtins.formatting.opentofu_fmt,
       },
     })

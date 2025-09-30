@@ -46,7 +46,7 @@ return {
         neotest.run.run({ strategy = "dap" })
       end)
       vim.keymap.set("n", "<leader>to", function()
-        neotest.output.open()
+        neotest.output.open({enter = true})
       end)
     end,
   },
