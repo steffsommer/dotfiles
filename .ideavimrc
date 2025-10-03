@@ -102,7 +102,7 @@ nnoremap ü :action GotoNextError<CR>
 nnoremap Ü :action GotoPreviousError<CR>
 
 " writing
-nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>ff :action ReformatCode<CR>
 nnoremap <leader>co :action OptimizeImports<CR>
 nnoremap <leader>xq :action Refactorings.QuickListPopupAction<CR>
