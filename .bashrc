@@ -100,11 +100,6 @@ if [ -f /usr/share/fzf/key-bindings.bash ]; then
   source /usr/share/fzf/key-bindings.bash
 fi
 
-# Load Angular CLI autocompletion.
-if command -v ng &>/dev/null; then
-  source <(ng completion script)
-fi
-
 ##############################################
 ############## CUSTOM FUNCTIONS ##############
 ##############################################
