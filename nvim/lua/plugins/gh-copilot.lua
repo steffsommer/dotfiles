@@ -14,7 +14,6 @@ return {
           height = 0.9,
           border = "rounded",
           title = " 🤖 AI Assistant",
-          zindex = 100,
           auto_insert_mode = true,
         },
         headers = {
@@ -29,8 +28,8 @@ return {
       }
     end,
     keys = {
-      { "<c-s>",     "<CR>", ft = "copilot-chat", remap = true },
-      { "<leader>a", "",     mode = { "n", "v" } },
+      { "<c-s>", "<CR>", ft = "copilot-chat", remap = true },
+      { "<leader>a", "", mode = { "n", "v" } },
       {
         "<leader>aa",
         function()
