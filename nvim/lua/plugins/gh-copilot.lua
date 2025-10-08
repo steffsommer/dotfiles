@@ -7,28 +7,23 @@ return {
       "MeanderingProgrammer/render-markdown.nvim",
     },
     opts = function()
-      local user = vim.env.USER or "User"
-      -- Register copilot-chat filetype
-      require('render-markdown').setup({
-        file_types = { 'markdown', 'copilot-chat' },
-      })
       return {
         window = {
-          layout = 'float',
+          layout = "float",
           width = 100,
           height = 0.9,
-          border = 'rounded',
-          title = ' 🤖 AI Assistant',
+          border = "rounded",
+          title = " 🤖 AI Assistant",
           zindex = 100,
           auto_insert_mode = true,
         },
         headers = {
-          user = "🤓 Steff",
-          assistant = ' 🤖 Copilot',
-          tool = '🔧 Tool',
+          user = "👨‍💻 Steff",
+          assistant = "🤖 AI Assistant",
+          tool = "🔧 Tool",
         },
         temperature = 0.1,
-        separator = '━━',
+        separator = "━━",
         auto_fold = true,
         auto_insert_mode = true,
       }
@@ -73,8 +68,16 @@ return {
     },
     config = function(_, opts)
       local chat = require("CopilotChat")
+      -- Auto-command to customize chat buffer behavior
+      -- vim.api.nvim_create_autocmd("BufEnter", {
+      --   pattern = "copilot-*",
+      --   callback = function()
+      --     vim.opt_local.relativenumber = false
+      --     vim.opt_local.number = false
+      --     vim.opt_local.conceallevel = 0
+      --   end,
+      -- })
       chat.setup(opts)
     end,
   },
-
 }
