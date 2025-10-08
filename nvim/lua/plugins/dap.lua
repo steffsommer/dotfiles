@@ -106,10 +106,6 @@ return {
                 size = 0.25,
               },
               {
-                id = "repl",
-                size = 0.25,
-              },
-              {
                 id = "stacks",
                 size = 0.25,
               },
@@ -120,8 +116,8 @@ return {
           {
             elements = {
               {
-                id = "console",
-                size = 1.0,
+                id = "repl",
+                size = 0.25,
               },
             },
             position = "bottom",
