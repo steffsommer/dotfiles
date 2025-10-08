@@ -3,16 +3,34 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
     cmd = "CopilotChat",
+    dependencies = {
+      "MeanderingProgrammer/render-markdown.nvim",
+    },
     opts = function()
       local user = vim.env.USER or "User"
-      user = user:sub(1, 1):upper() .. user:sub(2)
+      -- Register copilot-chat filetype
+      require('render-markdown').setup({
+        file_types = { 'markdown', 'copilot-chat' },
+      })
       return {
-        auto_insert_mode = true,
-        question_header = "  " .. user .. " ",
-        answer_header = "  Copilot ",
         window = {
-          width = 0.4,
+          layout = 'float',
+          width = 100,
+          height = 0.9,
+          border = 'rounded',
+          title = ' 🤖 AI Assistant',
+          zindex = 100,
+          auto_insert_mode = true,
         },
+        headers = {
+          user = "🤓 Steff",
+          assistant = ' 🤖 Copilot',
+          tool = '🔧 Tool',
+        },
+        temperature = 0.1,
+        separator = '━━',
+        auto_fold = true,
+        auto_insert_mode = true,
       }
     end,
     keys = {
