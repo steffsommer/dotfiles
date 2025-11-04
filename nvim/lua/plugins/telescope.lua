@@ -18,6 +18,11 @@ return {
     config = function()
       local telescope = require("telescope")
       telescope.setup({
+        defaults = {
+          preview = {
+            hide_on_startup = true,
+          },
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),

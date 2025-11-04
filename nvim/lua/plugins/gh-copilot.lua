@@ -8,6 +8,7 @@ return {
     },
     opts = function()
       return {
+        show_help = false,
         window = {
           layout = "float",
           width = 100,
