@@ -84,6 +84,9 @@ alias pushnoci='git push -o integrations.skip_ci'
 alias pgl='python -m pgcli -U postgres -d' # followed by db_name
 alias listdbs='python -m pgcli -U postgres -l'
 
+# Remove the oh my bash update lock if it hangs again
+alias fixomb='sudo touch /home/$USER/.oh-my-bash/log/update.lock && sudo rm -rf /home/$USER/.oh-my-bash/log/update.lock'
+
 ##############################################
 ########## PROGRESSIVE ENHANCEMENT ###########
 ##############################################
