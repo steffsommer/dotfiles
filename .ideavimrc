@@ -122,6 +122,7 @@ nnoremap <leader>ds :action Stop<CR>
 
 "+=-----------------------------=+ GIT +=-----------------------------=+"
 nnoremap <leader>gc :action Git.CompareWithBranch<CR>
+nnoremap <leader>gb :action Annotate<CR>
 
 "+=-----------------------------=+ MISC +=-----------------------------=+"
 

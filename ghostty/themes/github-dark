@@ -1,0 +1,33 @@
+# GitHub Dark Ghostty Theme
+
+# ANSI 16-color palette
+palette = 0=#0d1117
+palette = 1=#fa7970
+palette = 2=#7ce38b
+palette = 3=#faa35a
+palette = 4=#a2d2fb
+palette = 5=#cea5fb
+palette = 6=#77bdfb
+palette = 7=#ecf2f8
+
+palette = 8=#2e3440
+palette = 9=#faa35a
+palette = 10=#7ce38b
+palette = 11=#faa35a
+palette = 12=#a2d2fb
+palette = 13=#cea5fb
+palette = 14=#77bdfb
+palette = 15=#ecf2f8
+
+# Background / foreground
+background = #0d1117
+foreground = #ecf2f8
+
+# Cursor
+cursor-color = #ecf2f8
+cursor-text = #0d1117
+
+# Selection
+selection-background = #2e3440
+selection-foreground = #ecf2f8
+

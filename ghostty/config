@@ -1,0 +1,6 @@
+theme = github-dark
+macos-option-as-alt = left
+keybind = clear
+maximize = true
+macos-non-native-fullscreen = visible-menu
+font-size = 15

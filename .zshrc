@@ -98,9 +98,9 @@ if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source "/usr/share/nvm/init-nvm.sh"
 fi
 
-if [ -f /usr/share/fzf/key-bindings.zsh ]; then
-  source /usr/share/fzf/key-bindings.zsh
-fi
+# load fzf integration
+source <(fzf --zsh)
+
 
 ##############################################
 ############## CUSTOM FUNCTIONS ##############
@@ -141,4 +141,3 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1
 
 export PATH="$PATH:/home/$USER/projects/scripts"
-
