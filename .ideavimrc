@@ -59,7 +59,7 @@ map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 " quick close windows
 nnoremap <Leader>bd :action CloseContent<CR>
 nnoremap <Leader>q :action CloseContent<CR>
-nnoremap <C-w> :action SaveAll<CR>
+nnoremap <C-g> :action SaveAll<CR>
 
 "+=-----------------------------=+ NAVIGATION +=-----------------------------=+"
 
@@ -146,6 +146,8 @@ let g:NERDTreeMapQuit=<Esc>
 
 
 
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
 " NerdTree keybindings, just for reference
 " o	Open files, directories and bookmarks

@@ -3,4 +3,7 @@ macos-option-as-alt = left
 keybind = clear
 maximize = true
 macos-non-native-fullscreen = visible-menu
-font-size = 15
+font-size = 18
+
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard

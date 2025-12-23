@@ -106,14 +106,6 @@ source <(fzf --zsh)
 ############## CUSTOM FUNCTIONS ##############
 ##############################################
 
-# Forcefully kill a process based a port it occupies
-# Usage: portpkill <port>
-function portpkill() {
-  ss_line=$(ss -lptn "sport = $1")
-  pid=$(echo $ss_line | awk -F'pid=' '{print $2}' | awk -F',' '{print $1}')
-  kill -9 $pid
-}
-
 # Git Push Upstream
 # - Create a upstream branch for the currently checked out branch at the origin remote
 # - Push the local changes to the upstream branch
