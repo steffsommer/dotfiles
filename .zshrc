@@ -81,10 +81,17 @@ alias gl="git log --graph --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgree
 alias gaa='git add "*"'
 alias gfa='git fetch --all'
 alias gp='git pull'
+alias lastchanges='git log -5 --format="%an %ad" --date=iso -- ' # followed by file or directory
+alias sbr='git branch --all | fzf | xargs git switch' # switch branch
+alias cpbranch='git rev-parse --abbrev-ref HEAD | pbcopy'
 
 # postgres stuff
 alias pgl='python -m pgcli -U postgres -d' # followed by db_name
 alias listdbs='python -m pgcli -U postgres -l'
+
+# GitHub
+
+alias viewpr='gh pr view --web $(git rev-parse --abbrev-ref HEAD)'
 
 ##############################################
 ########## PROGRESSIVE ENHANCEMENT ###########
@@ -96,6 +103,10 @@ fi
 
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source "/usr/share/nvm/init-nvm.sh"
+fi
+
+if command -v pyenv &>/dev/null; then
+  eval "$(pyenv init --path)"
 fi
 
 # load fzf integration

@@ -17,6 +17,7 @@ set ignorecase
 set smartcase
 set incsearch
 set clipboard+=unnamed
+set scrolloff=5
 
 " Plugins
 set NERDTree

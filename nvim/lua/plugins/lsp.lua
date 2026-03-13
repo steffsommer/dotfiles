@@ -28,12 +28,12 @@ return {
         "bashls",
         "eslint",
         "html",
-        "jdtls",
         "lua_ls",
         "svelte",
         "ts_ls",
         "gopls",
         "sqlls",
+        "basedpyright"
       },
       handlers = {
         ["angularls"] = function()
@@ -89,6 +89,9 @@ return {
         capabilities = capabilities,
       })
       lspconfig.terraformls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.basedpyright.setup({
         capabilities = capabilities,
       })
       lspconfig.gopls.setup({
