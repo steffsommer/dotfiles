@@ -18,109 +18,25 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    opts = {
-      auto_install = true,
-      automatic_enable = false, -- very important to avoid duplicate LSP servers since nvim 0.11
-      ensure_installed = {
-        "angularls",
-        "bashls",
-        "eslint",
-        "html",
-        "lua_ls",
-        "svelte",
-        "ts_ls",
-        "gopls",
-        "sqlls",
-        "basedpyright"
-      },
-      handlers = {
-        ["angularls"] = function()
-          local lspconfig = require("lspconfig")
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-          local util = require("lspconfig.util")
-          lspconfig.angularls.setup({
-            capabilities = capabilities,
-            root_dir = util.root_pattern("angular.json", "project.json"),
-          })
-        end,
-      },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    lazy = false,
-    opts = {
-      capabilities = {
-        workspace = {
-          fileOperations = {
-            didRename = true,
-            willRename = true,
-          },
+    "mason-org/mason-lspconfig.nvim",
+      opts = {
+        auto_install = true,
+        automatic_enable = true,
+        ensure_installed = {
+          "angularls",
+          "bashls",
+          "eslint",
+          "html",
+          "lua_ls",
+          "svelte",
+          "ts_ls",
+          "gopls",
         },
-      },
     },
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local util = require("lspconfig.util")
-      local lspconfig = require("lspconfig")
-
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.svelte.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.angularls.setup({
-        capabilities = capabilities,
-        root_dir = util.root_pattern("angular.json", "project.json"),
-      })
-      lspconfig.eslint.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.terraformls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.basedpyright.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-        settings = {
-          gopls = {
-            buildFlags = { "-tags=slowtest unittest" },
-          },
-        },
-      })
-      lspconfig.protols.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.sqlls.setup({
-        capabilities = capabilities,
-      })
-
-      -- Use LspAttach autocommand to only map the following keys
-      -- after the language server attaches to the current buffer
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", { clear = false }),
-        callback = function(ev)
-          require("util/lsp").setup_default_keybindings(ev)
-        end,
-      })
-
-      -- make LSP windows bordered
-      require("lspconfig.ui.windows").default_options.border = "rounded"
-    end,
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
   },
   {
     "folke/lazydev.nvim",

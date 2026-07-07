@@ -144,3 +144,5 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1
 
 export PATH="$PATH:/home/$USER/projects/scripts"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

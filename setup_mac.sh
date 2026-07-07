@@ -12,12 +12,13 @@ typeset -A filesToSymlink
 
 filesToSymlink=(
   nvim               "$HOME/.config/nvim"
-  .zshrc             "$HOME/.zshrc"
+  .bashrc             "$HOME/.bashrc"
   .tigrc             "$HOME/.tigrc"
   zellij_config.kdl  "$HOME/.config/zellij/config.kdl"
   ghostty            "$HOME/.config/ghostty"
   .ideavimrc         "$HOME/.ideavimrc"
   aerospace          "$HOME/.config/aerospace"
+  .claude            "$HOME/.claude"
 )
 
 echo "[INFO] Symlinking dotfiles ..."

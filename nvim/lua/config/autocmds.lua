@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    require("util.lsp").setup_default_keybindings(ev)
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help" },
   callback = function()

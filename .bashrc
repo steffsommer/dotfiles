@@ -18,7 +18,7 @@ case $- in
 *) return ;;
 esac
 
-export OSH="/home/$USER/.oh-my-bash"
+export OSH="$HOME/.oh-my-bash"
 OSH_THEME="font"
 OMB_USE_SUDO=false
 completions=(
@@ -95,13 +95,24 @@ if command -v lsd &>/dev/null; then
   alias ls='lsd'
 fi
 
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
-  source "/usr/share/nvm/init-nvm.sh"
-fi
+# if command -v pyenv &>/dev/null; then
+#   pyenv init --install 
+# fi
 
-if [ -f /usr/share/fzf/key-bindings.bash ]; then
-  source /usr/share/fzf/key-bindings.bash
-fi
+# if [ -f /usr/share/nvm/init-nvm.sh ]; then
+#   source "/usr/share/nvm/init-nvm.sh"
+# fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# fzf
+# linux
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+# mac
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ##############################################
 ############## CUSTOM FUNCTIONS ##############

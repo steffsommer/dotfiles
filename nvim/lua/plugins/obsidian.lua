@@ -6,10 +6,10 @@ return {
     "hrsh7th/nvim-cmp",
     "nvim-telescope/telescope.nvim",
   },
-  event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/vaults/**.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/vaults/**.md",
-  },
+  -- event = {
+  --   "BufReadPre " .. vim.fn.expand("~") .. "/vaults/**.md",
+  --   "BufNewFile " .. vim.fn.expand("~") .. "/vaults/**.md",
+  -- },
   opts = {
     workspaces = {
       {
