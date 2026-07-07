@@ -11,14 +11,14 @@ dotfiles_dir=$(cd "$(dirname "$0")" && pwd)
 typeset -A filesToSymlink
 
 filesToSymlink=(
-  nvim               "$HOME/.config/nvim"
-  .bashrc             "$HOME/.bashrc"
-  .tigrc             "$HOME/.tigrc"
-  zellij_config.kdl  "$HOME/.config/zellij/config.kdl"
-  ghostty            "$HOME/.config/ghostty"
-  .ideavimrc         "$HOME/.ideavimrc"
-  aerospace          "$HOME/.config/aerospace"
-  .claude            "$HOME/.claude"
+  nvim                       "$HOME/.config/nvim"
+  .bashrc                    "$HOME/.bashrc"
+  .tigrc                     "$HOME/.tigrc"
+  zellij_config.kdl          "$HOME/.config/zellij/config.kdl"
+  ghostty                    "$HOME/.config/ghostty"
+  .ideavimrc                 "$HOME/.ideavimrc"
+  aerospace                  "$HOME/.config/aerospace"
+  .claude/keybindings.json   "$HOME/.claude/keybindings.json"
 )
 
 echo "[INFO] Symlinking dotfiles ..."
@@ -28,7 +28,8 @@ for file in "${(@k)filesToSymlink}"; do
   origin_path="$dotfiles_dir/$file"
   echo "  -> linking $file"
   mkdir -p "$(dirname "$target_path")"
-  ln -sf "$origin_path" "$target_path"
+  [[ -e "$target_path" || -L "$target_path" ]] && rm -rf "$target_path"
+  ln -s "$origin_path" "$target_path"
 done
 
 echo "[INFO] Done."

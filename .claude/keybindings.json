@@ -6,9 +6,15 @@
       "context": "Chat",
       "bindings": {
         "ctrl+e": "chat:externalEditor",
+        "ctrl+u": null,
+        "ctrl+shift+m": "chat:modelPicker"
+      }
+    },
+    {
+      "context": "Scroll",
+      "bindings": {
         "ctrl+f": "scroll:fullPageDown",
-        "ctrl+b": "scroll:fullPageUp",
-        "ctrl+u": null
+        "ctrl+b": "scroll:fullPageUp"
       }
     }
   ]
